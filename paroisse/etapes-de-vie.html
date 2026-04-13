@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Étapes de vie — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-etapes {
+  margin-top:var(--nav-h); min-height:54vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+}
+.hero-etapes .bg-img {
+  position:absolute; inset:0;
+  background:url('images/dscn8304.jpg') center 30%/cover no-repeat;
+}
+.hero-etapes .bg-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(120deg,rgba(26,18,8,.85) 0%,rgba(107,29,29,.4) 60%,rgba(26,18,8,.1) 100%);
+}
+
+/* ── CHRONOLOGIE DE VIE ── */
+.timeline {
+  position:relative; padding:2rem 0;
+}
+.timeline::before {
+  content:''; position:absolute; left:50%; top:0; bottom:0;
+  width:3px; background:linear-gradient(180deg,var(--or),var(--or-clair),rgba(200,151,31,.2));
+  transform:translateX(-50%); border-radius:2px;
+}
+.tl-item {
+  display:flex; align-items:center; gap:2rem;
+  margin-bottom:2.5rem; position:relative;
+}
+.tl-item:nth-child(odd)  { flex-direction:row; }
+.tl-item:nth-child(even) { flex-direction:row-reverse; }
+.tl-card {
+  flex:1; background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 4px 20px var(--ombre);
+  text-decoration:none; color:inherit; display:block;
+  transition:transform .28s, box-shadow .28s;
+  overflow:hidden;
+}
+.tl-card:hover { transform:translateY(-5px); box-shadow:0 10px 32px var(--ombre-forte); }
+.tl-card-inner { display:flex; align-items:center; gap:1.5rem; padding:1.8rem; }
+.tl-item:nth-child(even) .tl-card-inner { flex-direction:row-reverse; text-align:right; }
+.tl-icon-big {
+  width:64px; height:64px; border-radius:14px; flex-shrink:0;
+  background:linear-gradient(135deg,var(--or-pale),var(--creme));
+  display:flex; align-items:center; justify-content:center;
+  font-size:2rem; box-shadow:0 3px 12px rgba(200,151,31,.2);
+}
+.tl-text h3 { font-family:var(--serif); font-size:1.2rem; font-weight:600; color:var(--encre); margin-bottom:.3rem; }
+.tl-text p  { font-size:.87rem; color:var(--texte-doux); line-height:1.6; }
+.tl-text .tl-cta { display:inline-flex; align-items:center; gap:.3rem; color:var(--bordeaux); font-weight:700; font-size:.82rem; margin-top:.6rem; }
+.tl-card:hover .tl-cta { gap:.5rem; }
+.tl-text .tl-cta::after { content:'→'; }
+
+.tl-dot {
+  width:48px; height:48px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg,var(--or),var(--or-clair));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; z-index:1;
+  box-shadow:0 0 0 5px var(--ivoire), 0 4px 14px rgba(200,151,31,.4);
+}
+.tl-spacer { flex:1; }
+
+/* ── GRILLE SACREMENTS ── */
+.sacr-intro { background:var(--encre); padding:5rem 0; }
+.sacr-7grid { display:grid; grid-template-columns:repeat(7,1fr); gap:1rem; margin-top:3rem; }
+.sacr-tile {
+  background:rgba(255,255,255,.07); border-radius:var(--r);
+  padding:1.6rem .8rem; text-align:center;
+  border:1px solid rgba(200,151,31,.12);
+  transition:all .28s; text-decoration:none; color:var(--blanc); display:block;
+}
+.sacr-tile:hover {
+  background:rgba(200,151,31,.15);
+  border-color:rgba(200,151,31,.4);
+  transform:translateY(-5px);
+}
+.sacr-tile .s-ico { font-size:2.2rem; display:block; margin-bottom:.7rem; }
+.sacr-tile .s-name { font-size:.8rem; font-weight:600; line-height:1.3; }
+
+/* ── CONTACTS RAPIDES ── */
+.contacts-rapides { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.contact-rapide {
+  background:var(--blanc); border-radius:var(--r); padding:1.8rem;
+  box-shadow:0 3px 16px var(--ombre); text-align:center;
+  border-top:3px solid var(--or);
+}
+.contact-rapide .cr-ico { font-size:2rem; display:block; margin-bottom:.8rem; }
+.contact-rapide h4 { font-family:var(--serif); font-size:1rem; color:var(--encre); margin-bottom:.4rem; }
+.contact-rapide p  { font-size:.84rem; color:var(--texte-doux); line-height:1.55; margin-bottom:.8rem; }
+.contact-rapide a  { color:var(--bordeaux); font-weight:700; font-size:.88rem; }
+
+@media(max-width:1024px){ .sacr-7grid { grid-template-columns:repeat(4,1fr); } }
+@media(max-width:900px){
+  .timeline::before { left:24px; }
+  .tl-item, .tl-item:nth-child(even) { flex-direction:row !important; }
+  .tl-item:nth-child(even) .tl-card-inner { flex-direction:row !important; text-align:left !important; }
+  .tl-spacer { display:none; }
+  .contacts-rapides { grid-template-columns:1fr; }
+  .sacr-7grid { grid-template-columns:repeat(3,1fr); }
+}
+@media(max-width:600px){
+  .sacr-7grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero-etapes">
+  <div class="bg-img"></div>
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>Étapes de vie
+    </nav>
+    <div class="hero-eyebrow">Sacrements & accompagnement</div>
+    <h1 class="hero-h1">La paroisse<br><em>vous accompagne</em></h1>
+    <p class="hero-sub">À chaque moment décisif de votre vie — joie, deuil, amour, fragilité — notre communauté est présente pour prier avec vous, vous guider et vous accueillir.</p>
+    <div class="hero-verse">
+      « En marquant les moments les plus décisifs de la vie humaine, les sacrements manifestent que c'est toute notre existence qui est appelée à être vécue avec le Christ. »
+      <cite>— Catéchisme de l'Église Catholique</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHRONOLOGIE ── -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:3.5rem;">
+      <div class="sec-label">Le chemin chrétien</div>
+      <h2 class="sec-title">Les grandes <em>étapes de la vie</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">De la naissance jusqu'au dernier souffle, l'Église marche à vos côtés. Chaque étape est une invitation à aller plus loin dans la rencontre avec Dieu.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <a href="bapteme.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">💧</div>
+            <div class="tl-text">
+              <h3>Le Baptême</h3>
+              <p>La première porte. Accueillir un enfant dans la famille de Dieu, le marquer du sceau de l'Esprit Saint, l'ouvrir à une vie nouvelle.</p>
+              <span class="tl-cta">Tout savoir sur le baptême</span>
+            </div>
+          </div>
+        </a>
+        <div class="tl-dot">💧</div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot">✝️</div>
+        <a href="catechisme.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">✝️</div>
+            <div class="tl-text">
+              <h3>Le Catéchisme</h3>
+              <p>Découvrir Jésus avec joie, du CP jusqu'à la Première Communion. Un parcours progressif adapté à chaque âge.</p>
+              <span class="tl-cta">Découvrir le catéchisme</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="tl-item reveal">
+        <a href="reconciliation.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">🕊️</div>
+            <div class="tl-text">
+              <h3>La Réconciliation</h3>
+              <p>Le sacrement du pardon et de la miséricorde. Se remettre en route, allégé, vers Dieu et vers les autres.</p>
+              <span class="tl-cta">Le sacrement du pardon</span>
+            </div>
+          </div>
+        </a>
+        <div class="tl-dot">🕊️</div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot">💍</div>
+        <a href="mariage.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">💍</div>
+            <div class="tl-text">
+              <h3>Le Mariage</h3>
+              <p>Célébrer votre amour devant Dieu. Un sacrement qui consacre votre engagement et en fait un signe de l'amour du Christ pour son Église.</p>
+              <span class="tl-cta">Se marier à l'Église</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="tl-item reveal">
+        <a href="malades.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">🤲</div>
+            <div class="tl-text">
+              <h3>Le Service des malades</h3>
+              <p>Des chrétiens envoyés pour visiter, soutenir et porter la communion aux personnes malades, seules ou âgées dans nos villages.</p>
+              <span class="tl-cta">Demander une visite</span>
+            </div>
+          </div>
+        </a>
+        <div class="tl-dot">🤲</div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot">🌿</div>
+        <a href="obseques.html" class="tl-card">
+          <div class="tl-card-inner">
+            <div class="tl-icon-big">🌿</div>
+            <div class="tl-text">
+              <h3>Les Obsèques</h3>
+              <p>Accompagner dans la douceur et l'espérance en la Résurrection. Dire un "à-Dieu" en remettant nos proches dans les mains du Seigneur.</p>
+              <span class="tl-cta">Organiser des obsèques</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7 SACREMENTS ── -->
+<section class="sacr-intro">
+  <div class="container">
+    <div class="reveal on-dark text-center">
+      <div class="sec-label">Prier et célébrer</div>
+      <h2 class="sec-title">Les 7 sacrements <em>de l'Église</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">Les sacrements sont des signes visibles du don gratuit de Dieu — des actes d'alliance qui nous unissent au Christ et à l'Église tout entière.</p>
+    </div>
+    <div class="sacr-7grid">
+      <a href="bapteme.html"        class="sacr-tile reveal reveal-delay-1"><span class="s-ico">💧</span><div class="s-name">Baptême</div></a>
+      <a href="#"                   class="sacr-tile reveal reveal-delay-1"><span class="s-ico">🔥</span><div class="s-name">Confirmation</div></a>
+      <a href="#"                   class="sacr-tile reveal reveal-delay-2"><span class="s-ico">🍞</span><div class="s-name">Eucharistie</div></a>
+      <a href="reconciliation.html" class="sacr-tile reveal reveal-delay-2"><span class="s-ico">🕊️</span><div class="s-name">Réconciliation</div></a>
+      <a href="malades.html"        class="sacr-tile reveal reveal-delay-3"><span class="s-ico">🤲</span><div class="s-name">Onction des malades</div></a>
+      <a href="mariage.html"        class="sacr-tile reveal reveal-delay-3"><span class="s-ico">💍</span><div class="s-name">Mariage</div></a>
+      <a href="#"                   class="sacr-tile reveal reveal-delay-4"><span class="s-ico">✋</span><div class="s-name">Ordination</div></a>
+    </div>
+    <div class="reveal" style="margin-top:3rem;">
+      <div class="verset" style="max-width:720px;margin:0 auto;">
+        <blockquote>« Comme être social, l'homme a besoin de signes et de symboles pour communiquer avec autrui. Il en est de même pour sa relation à Dieu. »</blockquote>
+        <cite>— Catéchisme de l'Église Catholique, n° 1146</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTS RAPIDES ── -->
+<section class="bg-warm">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Nous joindre</div>
+      <h2 class="sec-title">Contacter <em>la paroisse</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+    </div>
+    <div class="contacts-rapides">
+      <div class="contact-rapide reveal reveal-delay-1">
+        <span class="cr-ico">💧</span>
+        <h4>Baptêmes</h4>
+        <p>Inscriptions et informations pour le baptême de votre enfant.</p>
+        <a href="mailto:bapteme.emiliedescausses@gmail.com">bapteme.emiliedescausses@gmail.com</a>
+      </div>
+      <div class="contact-rapide reveal reveal-delay-2">
+        <span class="cr-ico">💍</span>
+        <h4>Mariages</h4>
+        <p>Réservation de date et préparation au mariage à l'Église.</p>
+        <a href="mailto:mariage.emiliedescausses@gmail.com">mariage.emiliedescausses@gmail.com</a>
+      </div>
+      <div class="contact-rapide reveal reveal-delay-3">
+        <span class="cr-ico">📞</span>
+        <h4>Toutes questions</h4>
+        <p>Catéchisme, obsèques, malades, confessions et autres demandes.</p>
+        <a href="tel:0565670574">05 65 67 05 74</a>
+      </div>
+    </div>
+    <div class="reveal text-center" style="margin-top:2.5rem;">
+      <a href="contact.html" class="btn btn-bordeaux">Page contact complète</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="la-paroisse.html#equipe">Notre équipe</a></li><li><a href="la-paroisse.html#relais">Les 6 relais</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="reconciliation.html">Réconciliation</a></li><li><a href="malades.html">Service des malades</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>S'engager</h4><ul><li><a href="prier.html">Prier</a></li><li><a href="s-engager.html">Servir</a></li><li><a href="solidarite.html">Solidarité</a></li><li><a href="soutenir.html">Soutenir</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

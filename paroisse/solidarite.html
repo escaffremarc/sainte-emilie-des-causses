@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidarité — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-solidarite {
+  margin-top:var(--nav-h); min-height:54vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(140deg,#1a1205 0%,#3d2a08 50%,var(--or) 100%);
+}
+.hero-solidarite::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 40%, rgba(255,255,255,.10) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 55% at 5% 80%, rgba(107,29,29,.12) 0%,transparent 55%);
+}
+/* Cercles concentriques */
+.cercles { position:absolute; right:5%; top:50%; transform:translateY(-50%); pointer-events:none; }
+.cercle {
+  border:1px solid rgba(255,255,255,.12); border-radius:50%;
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  animation:cercleGrow 6s ease-out infinite;
+}
+.c1{ width:120px;height:120px;animation-delay:0s; }
+.c2{ width:220px;height:220px;animation-delay:1.5s; }
+.c3{ width:320px;height:320px;animation-delay:3s; }
+@keyframes cercleGrow {
+  0%  { opacity:.5; transform:translate(-50%,-50%) scale(.9); }
+  100%{ opacity:0;  transform:translate(-50%,-50%) scale(1.2); }
+}
+
+/* ── ASSOCIATIONS ── */
+.asso-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:3rem 0; }
+.asso-card {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 6px 28px var(--ombre); overflow:hidden;
+  transition:transform .3s, box-shadow .3s;
+}
+.asso-card:hover { transform:translateY(-6px); box-shadow:0 14px 40px var(--ombre-forte); }
+.asso-header { padding:2rem 2rem 1.5rem; color:var(--blanc); position:relative; overflow:hidden; }
+.asso-header::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(160deg,transparent 40%,rgba(0,0,0,.15) 100%);
+}
+.asso-header > * { position:relative; z-index:1; }
+.asso-logo-txt {
+  font-family:var(--caps); font-size:1.1rem; font-weight:600;
+  letter-spacing:.04em; margin-bottom:.3rem; color:var(--blanc);
+}
+.asso-devise { font-family:var(--serif); font-style:italic; font-size:.88rem; opacity:.85; }
+.asso-body { padding:1.8rem; }
+.asso-body p { font-size:.9rem; color:var(--texte-doux); line-height:1.72; margin-bottom:1rem; }
+.asso-body p:last-child { margin-bottom:0; }
+.asso-actions-list { list-style:none; margin:1rem 0; }
+.asso-actions-list li {
+  display:flex; align-items:flex-start; gap:.7rem;
+  font-size:.87rem; color:var(--texte-doux); padding:.4rem 0;
+  border-bottom:1px solid var(--creme);
+}
+.asso-actions-list li:last-child { border-bottom:none; }
+.asso-actions-list li::before { content:'→'; color:var(--or); font-weight:700; flex-shrink:0; }
+
+/* Couleurs headers */
+.asso-secours .asso-header { background:linear-gradient(135deg,#8b0000,#c0392b); }
+.asso-ccfd    .asso-header { background:linear-gradient(135deg,#1a4a1a,#2d7a2d); }
+.asso-migrants .asso-header { background:linear-gradient(135deg,#0d2035,#1a5580); }
+.asso-petits  .asso-header { background:linear-gradient(135deg,#3d2a08,#7a5a1a); }
+
+/* ── MATTHIEU 25 ── */
+.matthieu-band {
+  background:linear-gradient(135deg,#1a1205,#3d2a08);
+  padding:4rem 0; text-align:center;
+}
+
+/* ── COMMENT AIDER ── */
+.aider-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:2.5rem 0; }
+.aider-step {
+  background:var(--blanc); border-radius:var(--r); padding:2rem;
+  box-shadow:0 3px 16px var(--ombre); text-align:center;
+  border-bottom:3px solid var(--or);
+}
+.aider-step .a-icon { font-size:2.2rem; display:block; margin-bottom:.9rem; }
+.aider-step h4 { font-family:var(--serif); font-size:1.05rem; color:var(--encre); margin-bottom:.5rem; }
+.aider-step p  { font-size:.85rem; color:var(--texte-doux); line-height:1.6; }
+
+@media(max-width:900px){
+  .asso-grid  { grid-template-columns:1fr; }
+  .aider-steps{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html" class="active">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero-solidarite">
+  <div class="cercles"><div class="cercle c1"></div><div class="cercle c2"></div><div class="cercle c3"></div></div>
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="s-engager.html">S'engager</a><span>›</span>Solidarité
+    </nav>
+    <div class="hero-eyebrow">Actions solidaires</div>
+    <h1 class="hero-h1">Être bénévole<br><em>auprès des plus pauvres</em></h1>
+    <p class="hero-sub">Au nom de la fraternité évangélique, notre Église incite les chrétiens à être solidaires auprès des plus nécessiteux. Des associations actives près de chez vous.</p>
+    <div class="hero-verse">
+      « Toutes les fois que vous l'avez fait à l'un de ces plus petits de mes frères, vous me l'avez fait à moi-même. »
+      <cite>Matthieu 25, 40</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="reveal text-center" style="max-width:760px;margin:0 auto 3rem;">
+      <div class="sec-label">Fraternité en acte</div>
+      <h2 class="sec-title">La solidarité, <em>visage de l'Évangile</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">La solidarité caractérise des personnes qui ressentent une responsabilité d'assister autrui. Au sein de notre Église, elle s'exprime en particulier envers les plus pauvres et les personnes vulnérables — et elle s'accomplit à travers des bénévoles engagés.</p>
+    </div>
+
+    <!-- Associations -->
+    <div class="asso-grid">
+
+      <!-- Secours Catholique -->
+      <div class="asso-card asso-secours reveal reveal-delay-1">
+        <div class="asso-header">
+          <div class="asso-logo-txt">Secours Catholique — Caritas France</div>
+          <div class="asso-devise">« Ensemble pour un monde juste et fraternel »</div>
+        </div>
+        <div class="asso-body">
+          <p>Chaque jour, des équipes locales agissent en Aveyron, sur le Ruthénois et dans notre paroisse. Une équipe active près de chez vous pour :</p>
+          <ul class="asso-actions-list">
+            <li>Accompagnement individuel et scolaire</li>
+            <li>Boutiques solidaires et micro-crédit</li>
+            <li>Groupes conviviaux et logement d'urgence</li>
+            <li>Fraternité en milieu carcéral</li>
+            <li>Réseau de jeunes bénévoles</li>
+            <li>Accueil dans des familles pour les vacances</li>
+          </ul>
+          <a href="s-engager.html" class="btn btn-ghost-dark btn-sm" style="display:inline-flex;margin-top:.5rem;">Devenir bénévole →</a>
+        </div>
+      </div>
+
+      <!-- CCFD -->
+      <div class="asso-card asso-ccfd reveal reveal-delay-2">
+        <div class="asso-header">
+          <div class="asso-logo-txt">CCFD — Terre Solidaire</div>
+          <div class="asso-devise">« L'action solidaire grandit celui qui l'accomplit autant qu'elle sauve celui qui la reçoit. »</div>
+        </div>
+        <div class="asso-body">
+          <p>Le CCFD mobilise la solidarité en France pour lutter contre la faim dans le monde. Une équipe locale sur notre paroisse relaie cette mission à travers trois leviers :</p>
+          <ul class="asso-actions-list">
+            <li>Soutien à des projets de développement humain dans les pays du Sud</li>
+            <li>Éducation au développement et sensibilisation de l'opinion publique</li>
+            <li>Plaidoyer pour des règles internationales plus justes</li>
+          </ul>
+          <p style="font-size:.83rem;font-style:italic;color:var(--pierre);margin-top:.8rem;">Le CCFD appuie des dynamiques locales et facilite la création de réseaux régionaux et continentaux.</p>
+          <a href="s-engager.html" class="btn btn-ghost-dark btn-sm" style="display:inline-flex;margin-top:.5rem;">Rejoindre l'équipe →</a>
+        </div>
+      </div>
+
+      <!-- Pastorale des migrants -->
+      <div class="asso-card asso-migrants reveal reveal-delay-1">
+        <div class="asso-header">
+          <div class="asso-logo-txt">Pastorale des migrants</div>
+          <div class="asso-devise">« En Église, nul n'est étranger » — Saint Jean-Paul II</div>
+        </div>
+        <div class="asso-body">
+          <p>La pastorale des migrants a pour but d'humaniser la rencontre avec l'étranger, d'être solidaire avec le frère en difficulté, et d'encourager les Églises locales à accueillir les communautés chrétiennes d'origine étrangère.</p>
+          <p>« L'accueil de l'étranger qui caractérise l'Église naissante reste le sceau permanent de l'Église de Dieu. »</p>
+          <a href="contact.html" class="btn btn-ghost-dark btn-sm" style="display:inline-flex;margin-top:.8rem;">Nous contacter →</a>
+        </div>
+      </div>
+
+      <!-- Petits Frères des Pauvres -->
+      <div class="asso-card asso-petits reveal reveal-delay-2">
+        <div class="asso-header">
+          <div class="asso-logo-txt">Les Petits Frères des Pauvres</div>
+          <div class="asso-devise">Présents à Rodez et Espalion</div>
+        </div>
+        <div class="asso-body">
+          <p>Actifs sur notre paroisse, les Petits Frères des Pauvres luttent contre l'isolement et la solitude des personnes âgées. Leurs actions sur notre territoire comprennent :</p>
+          <ul class="asso-actions-list">
+            <li>Visites régulières aux personnes isolées</li>
+            <li>Aide aux victimes de sinistres</li>
+            <li>Aides financières diverses</li>
+            <li>Engagements de bénévolat de proximité</li>
+          </ul>
+          <a href="s-engager.html" class="btn btn-ghost-dark btn-sm" style="display:inline-flex;margin-top:.5rem;">S'engager →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MATTHIEU 25 ── -->
+<div class="matthieu-band">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1.5rem;">✦ MATTHIEU 25 ✦</p>
+    <p style="font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--blanc);line-height:1.85;max-width:640px;margin:0 auto;">
+      « Car j'avais faim et vous m'avez donné à manger, j'avais soif et vous m'avez donné à boire, j'étais nu et vous m'avez vêtu, malade et en prison et vous m'avez visité… »
+    </p>
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.45);margin-top:1.2rem;">Matthieu 25, 35-36</p>
+  </div>
+</div>
+
+<!-- ── COMMENT AIDER ── -->
+<section class="bg-warm">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Passer à l'action</div>
+      <h2 class="sec-title">Comment <em>contribuer ?</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+    </div>
+    <div class="aider-steps">
+      <div class="aider-step reveal reveal-delay-1">
+        <span class="a-icon">🙋</span>
+        <h4>Rejoindre une association</h4>
+        <p>Contactez la Maison paroissiale ou directement l'une des associations ci-dessus. Elles forment leurs bénévoles avec soin.</p>
+      </div>
+      <div class="aider-step reveal reveal-delay-2">
+        <span class="a-icon">💶</span>
+        <h4>Faire un don</h4>
+        <p>Chacune de ces associations est habilitée à recevoir des dons défiscalisables. Chaque euro compte pour un monde plus juste.</p>
+      </div>
+      <div class="aider-step reveal reveal-delay-3">
+        <span class="a-icon">🙏</span>
+        <h4>Prier & sensibiliser</h4>
+        <p>Prier pour les plus pauvres et en parler autour de soi, c'est déjà agir. La solidarité commence dans les cœurs.</p>
+      </div>
+    </div>
+    <div class="reveal text-center" style="margin-top:2rem;">
+      <a href="contact.html" class="btn btn-bordeaux">Nous contacter pour s'engager</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer</div>
+      <h2 class="sec-title">Autres façons <em>de s'impliquer</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="s-engager.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">❤️</div><h3 class="card-title">S'engager</h3><p class="card-desc">Mettre son talent au service de la paroisse.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="soutenir.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">💶</div><h3 class="card-title">Soutenir la paroisse</h3><p class="card-desc">Denier de l'Église et offrandes.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="prier.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🕯️</div><h3 class="card-title">Prier ensemble</h3><p class="card-desc">Rejoindre nos groupes de prière.</p><span class="card-link">Découvrir</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="index.html">Accueil</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>S'engager</h4><ul><li><a href="s-engager.html">Servir</a></li><li><a href="solidarite.html">Solidarité</a></li><li><a href="soutenir.html">Soutenir</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

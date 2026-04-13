@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Paroisse Sainte Émilie des Causses — Onet-le-Château, Aveyron. Choisissez d'être vous… et de le vivre !">
+<title>Accueil — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── SLIDER HERO ── */
+.hero { min-height:94vh; }
+.slide {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transition:opacity 1.4s ease;
+}
+.slide.active { opacity:1; }
+.slide::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(115deg,rgba(26,18,8,.80) 0%,rgba(107,29,29,.28) 50%,transparent 100%);
+}
+.slide-1 { background-image:url('images/20220414_162631-Retable-Central.jpg'); background-position:center 20%; }
+.slide-2 { background-image:url('images/20220414_162442-Retable-gauche.jpg'); }
+.slide-3 { background-image:url('images/dscn8304.jpg'); background-position:center 30%; }
+.slide-4 { background-image:url('images/20220414_162506-Retable-droit.jpg'); }
+
+/* ── BANDEAU ANNONCE ── */
+.annonce-band {
+  background:linear-gradient(90deg,var(--or) 0%,var(--or-clair) 100%);
+  color:var(--encre); text-align:center;
+  padding:0.65rem 1rem; font-size:0.84rem; font-weight:700;
+  font-family:var(--caps); letter-spacing:0.08em;
+}
+.annonce-band a { color:var(--bordeaux); text-decoration:underline; }
+
+/* ── SECTION ACTUALITÉS ── */
+.actu-main { display:grid; grid-template-columns:1.8fr 1fr; gap:1.8rem; margin-top:3rem; }
+.actu-big {
+  border-radius:var(--r); overflow:hidden;
+  background:var(--blanc);
+  box-shadow:0 4px 28px var(--ombre);
+  display:flex; flex-direction:column;
+  text-decoration:none; color:inherit;
+  transition:transform .28s,box-shadow .28s;
+}
+.actu-big:hover { transform:translateY(-4px); box-shadow:0 12px 40px var(--ombre-forte); }
+.actu-big img { width:100%; height:300px; object-fit:cover; }
+.actu-big .card-body { padding:2rem; }
+.actu-big .card-title { font-size:1.5rem; }
+
+.actu-side { display:flex; flex-direction:column; gap:1.2rem; }
+.actu-small {
+  border-radius:var(--r); overflow:hidden; background:var(--blanc);
+  box-shadow:0 4px 20px var(--ombre);
+  display:grid; grid-template-columns:110px 1fr;
+  text-decoration:none; color:inherit;
+  transition:transform .25s,box-shadow .25s;
+  flex:1;
+}
+.actu-small:hover { transform:translateX(4px); box-shadow:0 6px 28px var(--ombre-forte); }
+.actu-small img { width:110px; height:100%; object-fit:cover; }
+.actu-small .card-body { padding:1.1rem 1.2rem; }
+.actu-small .card-title { font-size:1rem; }
+
+/* ── ÉTAPES ── */
+.etapes-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem;
+  margin-top:3rem;
+}
+.etape {
+  background:var(--blanc); border-radius:var(--r);
+  padding:1.8rem 1.3rem 1.5rem; text-align:center;
+  box-shadow:0 3px 16px var(--ombre);
+  text-decoration:none; color:inherit; display:block;
+  border-bottom:3px solid transparent;
+  transition:all .28s;
+  position:relative; overflow:hidden;
+}
+.etape::before {
+  content:''; position:absolute;
+  inset:0; background:linear-gradient(160deg,transparent 60%,rgba(200,151,31,.06) 100%);
+  opacity:0; transition:opacity .28s;
+}
+.etape:hover { transform:translateY(-6px); box-shadow:0 10px 32px var(--ombre-forte); border-bottom-color:var(--or); }
+.etape:hover::before { opacity:1; }
+.etape-emoji { font-size:2.2rem; display:block; margin-bottom:0.9rem; }
+.etape-name { font-family:var(--serif); font-size:1.1rem; font-weight:600; color:var(--encre); margin-bottom:0.4rem; }
+.etape-desc { font-size:0.82rem; color:var(--texte-doux); line-height:1.55; }
+
+/* ── PRESENTATION ── */
+.pres-wrap {
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+}
+.pres-images { position:relative; height:500px; }
+.pres-img-a {
+  position:absolute; top:0; left:0;
+  width:72%; height:360px; object-fit:cover;
+  border-radius:var(--r); box-shadow:0 8px 36px var(--ombre-forte);
+}
+.pres-img-b {
+  position:absolute; bottom:0; right:0;
+  width:60%; height:260px; object-fit:cover;
+  border-radius:var(--r); box-shadow:0 8px 36px var(--ombre-forte);
+  border:5px solid var(--ivoire);
+}
+.pres-medallion {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:88px; height:88px; border-radius:50%; z-index:2;
+  background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(200,151,31,.45);
+  font-family:var(--serif); text-align:center; color:var(--encre);
+  font-weight:700; line-height:1.1;
+}
+.pres-medallion big { font-size:1.6rem; }
+.pres-medallion small { font-size:0.55rem; font-family:var(--caps); letter-spacing:0.1em; text-transform:uppercase; }
+
+.relais-tags { display:flex; flex-wrap:wrap; gap:0.45rem; margin:1.3rem 0; }
+.relais-pill {
+  background:var(--or-pale); color:var(--bordeaux); font-size:0.78rem; font-weight:700;
+  padding:0.3rem 0.85rem; border-radius:20px; border:1px solid rgba(200,151,31,.3);
+  font-family:var(--caps); letter-spacing:0.06em;
+}
+
+.equipe { margin-top:1.5rem; border-top:1px solid var(--creme); padding-top:1.2rem; }
+.equipe-row { display:flex; align-items:center; gap:0.8rem; padding:0.55rem 0; border-bottom:1px solid var(--creme); }
+.equipe-row:last-child { border-bottom:none; }
+.equipe-dot { width:9px; height:9px; border-radius:50%; background:var(--or); flex-shrink:0; }
+.equipe-name { font-weight:700; font-size:0.92rem; color:var(--encre); }
+.equipe-role { font-size:0.8rem; color:var(--pierre); }
+
+/* ── SECTION PRIANTE ── */
+.priere-section { background:var(--encre); padding:5rem 0; }
+.priere-grid {
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-top:3rem;
+}
+.priere-card {
+  border-radius:var(--r); padding:2rem;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(200,151,31,.15);
+  text-align:center;
+  transition:background .28s, border-color .28s;
+}
+.priere-card:hover { background:rgba(200,151,31,.10); border-color:rgba(200,151,31,.35); }
+.priere-icon { font-size:2.4rem; display:block; margin-bottom:1rem; }
+.priere-title { font-family:var(--serif); font-size:1.2rem; color:var(--blanc); font-weight:600; margin-bottom:0.5rem; }
+.priere-text { font-size:0.87rem; color:rgba(255,255,255,.65); line-height:1.65; }
+.priere-link { display:inline-block; margin-top:1rem; color:var(--or-clair); font-size:0.82rem; font-weight:700; font-family:var(--caps); letter-spacing:0.08em; }
+
+/* ── CTA ENGAGER ── */
+.engager-band {
+  background:linear-gradient(135deg,var(--bordeaux) 0%,#4a1010 100%);
+  padding:4rem 0;
+  position:relative; overflow:hidden;
+}
+.engager-band::before {
+  content:''; position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(232,184,75,0.15)'/%3E%3C/svg%3E");
+}
+.engager-inner { position:relative; z-index:1; text-align:center; }
+.engager-inner .sec-title { color:var(--blanc); }
+.engager-inner .sec-lead { color:rgba(255,255,255,.78); margin:0 auto; }
+.engager-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem; }
+
+/* ── GALERIE PATRIMOINE ── */
+.galerie { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+.galerie-item { border-radius:var(--r); overflow:hidden; box-shadow:0 4px 18px var(--ombre); position:relative; }
+.galerie-item img { width:100%; height:280px; object-fit:cover; display:block; transition:transform .5s; }
+.galerie-item:hover img { transform:scale(1.04); }
+.galerie-caption {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(transparent,rgba(26,18,8,.85));
+  padding:1.5rem 1.1rem 0.9rem;
+  color:var(--blanc);
+}
+.galerie-caption p { font-family:var(--serif); font-size:0.95rem; font-style:italic; }
+.galerie-caption span { font-size:0.74rem; font-family:var(--caps); letter-spacing:0.1em; color:var(--or-clair); }
+
+/* ── CARTE RELAIS ── */
+.relais-wrap { display:grid; grid-template-columns:1.2fr 1fr; gap:3.5rem; align-items:center; }
+.relais-img { border-radius:var(--r); box-shadow:0 8px 36px var(--ombre-forte); width:100%; }
+.relais-list { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; margin-top:1.5rem; }
+.relais-item {
+  background:var(--blanc); border-radius:10px; padding:0.9rem 1.1rem;
+  border-left:3px solid var(--or); box-shadow:0 2px 10px var(--ombre);
+}
+.relais-item h4 { font-weight:700; font-size:0.88rem; color:var(--encre); }
+.relais-item p  { font-size:0.77rem; color:var(--pierre); margin-top:0.15rem; }
+
+/* ── SECTION CONTACT BAS ── */
+.contact-band {
+  background:var(--creme);
+  border-top:3px solid var(--or-pale);
+  padding:3.5rem 0;
+}
+.contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+.contact-bloc { text-align:center; }
+.contact-ico { font-size:2rem; margin-bottom:0.8rem; display:block; }
+.contact-bloc h4 { font-family:var(--serif); font-size:1.1rem; font-weight:600; color:var(--encre); margin-bottom:0.4rem; }
+.contact-bloc p { font-size:0.88rem; color:var(--texte-doux); line-height:1.65; }
+.contact-bloc a { color:var(--bordeaux); font-weight:600; }
+
+@media(max-width:1024px){
+  .actu-main { grid-template-columns:1fr; }
+  .actu-side { flex-direction:row; }
+  .pres-wrap  { grid-template-columns:1fr; }
+  .pres-images { height:300px; }
+  .relais-wrap { grid-template-columns:1fr; }
+  .priere-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px){
+  .etapes-grid { grid-template-columns:repeat(2,1fr); }
+  .actu-side { flex-direction:column; }
+  .actu-small { grid-template-columns:1fr; }
+  .actu-small img { width:100%; height:140px; }
+  .galerie { grid-template-columns:1fr; }
+  .priere-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+  .relais-list { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ NAVIGATION ════════════════════ -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════ HERO SLIDER ════════════════════ -->
+<section class="hero" id="hero">
+  <div style="position:absolute;inset:0;">
+    <div class="slide slide-1 active"></div>
+    <div class="slide slide-2"></div>
+    <div class="slide slide-3"></div>
+    <div class="slide slide-4"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Paroisse Sainte Émilie des Causses</div>
+    <h1 class="hero-h1">
+      Une communauté<br>
+      <em>vivante & priante</em>
+    </h1>
+    <p class="hero-sub">
+      Choisissez d'être vous… et de le vivre !<br>
+      Chrétiens d'être tous… et de la vivre.
+    </p>
+    <div class="hero-verse">
+      « Je suis la Voie, la Vérité et la Vie. »<br>
+      <cite style="font-style:normal;font-size:.8rem;color:rgba(255,255,255,.5);">Jean 14,6</cite>
+    </div>
+    <div class="hero-btns">
+      <a href="etapes-de-vie.html" class="btn btn-or">Étapes de la vie</a>
+      <a href="contact.html" class="btn btn-ghost">Nous rejoindre</a>
+    </div>
+  </div>
+
+  <div class="slider-dots" id="sliderDots">
+    <button class="slider-dot active" onclick="goSlide(0)"></button>
+    <button class="slider-dot" onclick="goSlide(1)"></button>
+    <button class="slider-dot" onclick="goSlide(2)"></button>
+    <button class="slider-dot" onclick="goSlide(3)"></button>
+  </div>
+</section>
+
+<!-- ════════════════════ BANDEAU HORAIRES ════════════════════ -->
+<div class="horaires-band">
+  <div class="horaires-item">
+    <span class="horaires-icon">⛪</span>
+    <div class="horaires-text">
+      <strong>Messes en semaine</strong>
+      Mar, Mer, Ven 9h — Mer 18h30
+    </div>
+  </div>
+  <div class="horaires-sep"></div>
+  <div class="horaires-item">
+    <span class="horaires-icon">✨</span>
+    <div class="horaires-text">
+      <strong>Dimanche</strong>
+      Voir l'agenda selon les relais
+    </div>
+  </div>
+  <div class="horaires-sep"></div>
+  <div class="horaires-item">
+    <span class="horaires-icon">🏠</span>
+    <div class="horaires-text">
+      <strong>Maison paroissiale</strong>
+      Lun–Ven 9h30–12h / 14h30–17h — Sam 9h30–12h
+    </div>
+  </div>
+  <div class="horaires-sep"></div>
+  <a href="pdf/fiche-horaires-site.pdf" target="_blank" class="horaires-link">Voir les horaires complets →</a>
+</div>
+
+<!-- ════════════════════ ACTUALITÉS ════════════════════ -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Vie de la paroisse</div>
+      <h2 class="sec-title">Actualités <em>& Agenda</em></h2>
+      <div class="sec-divider"></div>
+    </div>
+    <div class="actu-main reveal">
+       <!-- grande cartes -->
+        <a href="pdf/fiche-horaires-site.pdf" target="_blank" class="actu-small card">
+          <img src="images/2026_horaires_messes.png" alt="Horaires des messes">
+          <div class="card-body">
+            <span class="card-tag">Agenda</span>
+            <h3 class="card-title">Horaires des messes en Aveyron</h3>
+            <p class="card-desc" style="font-size:.83rem;">En lien avec la plateforme Messes.Info</p>
+            <span class="card-link">Consulter</span>
+          </div>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ÉTAPES DE VIE ════════════════════ -->
+<section class="bg-warm">
+  <div class="container">
+    <div class="reveal text-center">
+      <div class="sec-label">Sacrements & accompagnement</div>
+      <h2 class="sec-title">La paroisse <em>vous accompagne</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">À chaque étape de votre vie, notre communauté est là pour vous accueillir, vous guider et prier avec vous.</p>
+    </div>
+    <div class="etapes-grid mt-3">
+      <a href="bapteme.html" class="etape reveal reveal-delay-1">
+        <span class="etape-emoji">💧</span>
+        <div class="etape-name">Baptême</div>
+        <p class="etape-desc">Accueillir la vie en Dieu, dimanche après dimanche à Saint-Joseph d'Onet.</p>
+      </a>
+      <a href="catechisme.html" class="etape reveal reveal-delay-2">
+        <span class="etape-emoji">✝️</span>
+        <div class="etape-name">Catéchisme</div>
+        <p class="etape-desc">Découvrir Jésus, du CP jusqu'à la Première Communion, avec joie.</p>
+      </a>
+      <a href="mariage.html" class="etape reveal reveal-delay-3">
+        <span class="etape-emoji">💍</span>
+        <div class="etape-name">Mariage</div>
+        <p class="etape-desc">Célébrer votre amour devant Dieu dans l'une de nos belles églises.</p>
+      </a>
+      <a href="reconciliation.html" class="etape reveal reveal-delay-4">
+        <span class="etape-emoji">🕊️</span>
+        <div class="etape-name">Réconciliation</div>
+        <p class="etape-desc">Le pardon de Dieu, signe de son amour infini pour chacun de nous.</p>
+      </a>
+      <a href="malades.html" class="etape reveal reveal-delay-1">
+        <span class="etape-emoji">🤲</span>
+        <div class="etape-name">Malades</div>
+        <p class="etape-desc">Visites, soutien et sacrements pour les personnes malades ou âgées.</p>
+      </a>
+      <a href="obseques.html" class="etape reveal reveal-delay-2">
+        <span class="etape-emoji">🌿</span>
+        <div class="etape-name">Obsèques</div>
+        <p class="etape-desc">Accompagner dans la paix et l'espérance en la Résurrection.</p>
+      </a>
+      <a href="prier.html" class="etape reveal reveal-delay-3">
+        <span class="etape-emoji">🙏</span>
+        <div class="etape-name">Prier</div>
+        <p class="etape-desc">Adoration, Rosaire, Renouveau charismatique… Venez prier avec nous.</p>
+      </a>
+      <a href="s-engager.html" class="etape reveal reveal-delay-4">
+        <span class="etape-emoji">❤️</span>
+        <div class="etape-name">S'engager</div>
+        <p class="etape-desc">Mettre ses talents au service de la communauté et des plus fragiles.</p>
+      </a>
+    </div>
+    <div class="text-center mt-3 reveal">
+      <a href="etapes-de-vie.html" class="btn btn-bordeaux">Toutes les étapes de vie</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ VERSET ════════════════════ -->
+<div style="background:var(--or-pale);padding:3rem 0;">
+  <div class="container-sm reveal">
+    <div class="verset">
+      <blockquote>
+        « Choisissez d'être vous… et de le vivre !<br>
+        C'est en prenant soin des blessures de l'humanité qu'on prend soin de Dieu et qu'on déploie le meilleur de soi-même. »
+      </blockquote>
+      <cite>— Sainte Émilie de Rodat, patronne de notre paroisse</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ PRÉSENTATION ════════════════════ -->
+<section class="bg-ivoire" id="paroisse">
+  <div class="container">
+    <div class="pres-wrap">
+      <div class="pres-images reveal">
+        <img src="images/20220414_162631-Retable-Central.jpg" alt="Rétable central" class="pres-img-a">
+        <img src="images/dscn8304.jpg" alt="Célébration" class="pres-img-b">
+        <div class="pres-medallion">
+          <big>6</big>
+          <small>Relais</small>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sec-label">La Paroisse</div>
+        <h2 class="sec-title">Sainte Émilie <em>des Causses</em></h2>
+        <div class="sec-divider"></div>
+        <p class="sec-lead">
+          Une communauté chrétienne enracinée dans les Causses du Rouergue, rassemblant six villages autour d'un même élan de foi et d'amour.
+        </p>
+        <p style="color:var(--texte-doux);font-size:.92rem;line-height:1.75;margin-top:1rem;">
+          Sainte Émilie de Rodat, notre patronne, était une éducatrice entièrement dévouée aux enfants et femmes en détresse. Sa devise est la nôtre : prendre soin de soi et prendre soin de Dieu pour donner à notre humanité un visage de fraternité, de paix et d'accueil.
+        </p>
+        <div class="relais-tags">
+          <span class="relais-pill">Agen d'Aveyron</span>
+          <span class="relais-pill">Gages</span>
+          <span class="relais-pill">Onet-le-Château</span>
+          <span class="relais-pill">St Martin de Limouze</span>
+          <span class="relais-pill">Ste Radegonde</span>
+          <span class="relais-pill">Sébazac</span>
+        </div>
+        <div class="equipe">
+          <div class="equipe-row"><div class="equipe-dot"></div><div><div class="equipe-name">Père Philippe ARNAL</div><div class="equipe-role">Prêtre en charge de la paroisse</div></div></div>
+          <div class="equipe-row"><div class="equipe-dot"></div><div><div class="equipe-name">Père André BARNABÉ</div><div class="equipe-role">Prêtre auxiliaire</div></div></div>
+          <div class="equipe-row"><div class="equipe-dot"></div><div><div class="equipe-name">M. Jean-Pierre FLAK</div><div class="equipe-role">Diacre permanent</div></div></div>
+        </div>
+        <a href="la-paroisse.html" class="btn btn-ghost-dark mt-2">Découvrir la paroisse →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PRIER ════════════════════ -->
+<section class="priere-section">
+  <div class="container">
+    <div class="reveal on-dark text-center">
+      <div class="sec-label">Spiritualité</div>
+      <h2 class="sec-title">Venez <em>prier</em> avec nous</h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">Nos groupes de prière vous accueillent tout au long de l'année dans un esprit de fraternité et de joie.</p>
+    </div>
+    <div class="priere-grid">
+      <div class="priere-card reveal reveal-delay-1">
+        <span class="priere-icon">🕯️</span>
+        <div class="priere-title">Adoration Eucharistique</div>
+        <p class="priere-text">Jeudi 17h45–18h30 · Église de Sébazac<br>Vendredi 18h–19h · Oratoire Saint-Joseph<br><em>Il est là… je suis là.</em></p>
+        <a href="prier.html#adoration" class="priere-link">En savoir plus →</a>
+      </div>
+      <div class="priere-card reveal reveal-delay-2">
+        <span class="priere-icon">📿</span>
+        <div class="priere-title">Équipes du Rosaire</div>
+        <p class="priere-text">Petits groupes priants réunis une fois par mois dans les maisons, en méditant les mystères du Christ à travers Marie.</p>
+        <a href="prier.html#rosaire" class="priere-link">En savoir plus →</a>
+      </div>
+      <div class="priere-card reveal reveal-delay-3">
+        <span class="priere-icon">✨</span>
+        <div class="priere-title">Renouveau Charismatique</div>
+        <p class="priere-text">Chaque lundi 20h30 · Oratoire Saint-Joseph<br>Groupe « La source d'eau vive » — louange, Parole, prière de guérison.</p>
+        <a href="prier.html#charismatique" class="priere-link">En savoir plus →</a>
+      </div>
+    </div>
+    <div class="text-center mt-3 reveal">
+      <a href="prier.html" class="btn btn-or">Tous les groupes de prière</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PATRIMOINE ════════════════════ -->
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Héritage de foi</div>
+      <h2 class="sec-title">L'art sacré <em>de nos églises</em></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-lead">Des siècles de prière ont sculpté, peint et embelli nos lieux de culte. Un patrimoine vivant, au service de la beauté qui élève l'âme.</p>
+    </div>
+    <div class="galerie">
+      <div class="galerie-item reveal reveal-delay-1">
+        <img src="images/20220414_162442-Retable-gauche.jpg" alt="Rétable gauche — saints de la paroisse">
+        <div class="galerie-caption">
+          <span>Patrimoine sacré</span>
+          <p>Rétable gauche — Saints patrons</p>
+        </div>
+      </div>
+      <div class="galerie-item reveal reveal-delay-2">
+        <img src="images/20220414_162631-Retable-Central.jpg" alt="Rétable central — Christ en croix">
+        <div class="galerie-caption">
+          <span>Patrimoine sacré</span>
+          <p>Rétable central — Christ en gloire</p>
+        </div>
+      </div>
+      <div class="galerie-item reveal reveal-delay-3">
+        <img src="images/20220414_162506-Retable-droit.jpg" alt="Rétable droit — martyrs d'Aveyron">
+        <div class="galerie-caption">
+          <span>Patrimoine sacré</span>
+          <p>Rétable droit — Martyrs de l'Aveyron</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ NOS RELAIS ════════════════════ -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="relais-wrap">
+      <div class="reveal">
+        <img src="images/1-panneau-paroisse.jpg" alt="Carte des relais de la paroisse" class="relais-img">
+      </div>
+      <div class="reveal">
+        <div class="sec-label">Territoire</div>
+        <h2 class="sec-title">Nos <em>6 relais</em> dans les Causses</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-lead">La paroisse Sainte Émilie des Causses regroupe six villages du Ruthénois, chacun avec sa propre vie communautaire et ses temps forts liturgiques.</p>
+        <div class="relais-list">
+          <div class="relais-item"><h4>Agen d'Aveyron</h4><p>Relais paroissial</p></div>
+          <div class="relais-item"><h4>Gages</h4><p>Relais paroissial</p></div>
+          <div class="relais-item"><h4>Onet-le-Château</h4><p>Maison paroissiale — siège</p></div>
+          <div class="relais-item"><h4>St Martin de Limouze</h4><p>Relais paroissial</p></div>
+          <div class="relais-item"><h4>Sainte Radegonde</h4><p>Relais paroissial</p></div>
+          <div class="relais-item"><h4>Sébazac</h4><p>Relais paroissial</p></div>
+        </div>
+        <a href="la-paroisse.html" class="btn btn-bordeaux mt-2">Découvrir notre territoire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CTA ENGAGEMENT ════════════════════ -->
+<div class="engager-band">
+  <div class="engager-inner reveal">
+    <div class="sec-label on-dark">Rejoignez-nous</div>
+    <h2 class="sec-title" style="color:var(--blanc);font-size:clamp(1.8rem,3.5vw,2.6rem);">
+      « Ne restez pas au balcon de la vie —<br>
+      <em style="color:var(--or-clair);">Jésus n'y est pas resté ! »</em>
+    </h2>
+    <p class="sec-lead" style="color:rgba(255,255,255,.78);margin:1rem auto 0;">
+      — Pape François aux jeunes, JMJ 2013
+    </p>
+    <div class="engager-btns">
+      <a href="s-engager.html" class="btn btn-or">Mettre son talent au service</a>
+      <a href="solidarite.html" class="btn btn-ghost">Actions solidaires</a>
+      <a href="soutenir.html" class="btn btn-ghost">Soutenir la paroisse</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ CONTACT BAS ════════════════════ -->
+<div class="contact-band">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-bloc reveal">
+        <span class="contact-ico">📍</span>
+        <h4>Maison paroissiale</h4>
+        <p>16 avenue des Lilas<br>12850 Onet-le-Château<br><a href="tel:0565670574">05 65 67 05 74</a></p>
+      </div>
+      <div class="contact-bloc reveal reveal-delay-2">
+        <span class="contact-ico">✉️</span>
+        <h4>Nous écrire</h4>
+        <p>
+          <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a><br>
+          Baptêmes : <a href="mailto:bapteme.emiliedescausses@gmail.com">bapteme@…</a><br>
+          Mariages : <a href="mailto:mariage.emiliedescausses@gmail.com">mariage@…</a>
+        </p>
+      </div>
+      <div class="contact-bloc reveal reveal-delay-3">
+        <span class="contact-ico">🌐</span>
+        <h4>Diocèse de Rodez</h4>
+        <p><a href="https://rodez.catholique.fr" target="_blank">rodez.catholique.fr</a><br>Église catholique en Aveyron</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Sainte Émilie des Causses</div>
+        <p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p>
+        <div class="footer-contact">
+          <p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p>
+          <p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p>
+          <p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>La paroisse</h4>
+        <ul>
+          <li><a href="la-paroisse.html">Présentation</a></li>
+          <li><a href="la-paroisse.html#equipe">Notre équipe</a></li>
+          <li><a href="la-paroisse.html#relais">Les 6 relais</a></li>
+          <li><a href="la-paroisse.html#patrimoine">Patrimoine</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Étapes de vie</h4>
+        <ul>
+          <li><a href="bapteme.html">Baptême</a></li>
+          <li><a href="catechisme.html">Catéchisme</a></li>
+          <li><a href="mariage.html">Mariage</a></li>
+          <li><a href="reconciliation.html">Réconciliation</a></li>
+          <li><a href="malades.html">Service des malades</a></li>
+          <li><a href="obseques.html">Obsèques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>S'engager</h4>
+        <ul>
+          <li><a href="prier.html">Prier ensemble</a></li>
+          <li><a href="s-engager.html">Servir la paroisse</a></li>
+          <li><a href="solidarite.html">Actions solidaires</a></li>
+          <li><a href="soutenir.html">Soutenir la paroisse</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Paroisse Sainte Émilie des Causses — Onet-le-Château, Aveyron</p>
+      <p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez — rodez.catholique.fr</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Slider ──
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.slider-dot');
+function goSlide(n) {
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+}
+setInterval(() => goSlide((cur + 1) % slides.length), 5800);
+
+// ── Nav mobile ──
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+);
+
+// ── Nav shadow au scroll ──
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── Animations au scroll (Reveal) ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

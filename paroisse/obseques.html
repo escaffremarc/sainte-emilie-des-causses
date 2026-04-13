@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsèques — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-obseques {
+  margin-top:var(--nav-h); min-height:52vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(150deg, #1a2a1a 0%, #2d4030 50%, #3d5040 100%);
+}
+.hero-obseques::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 70% at 85% 50%, rgba(200,151,31,.15) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 60% at 15% 80%, rgba(255,255,255,.04) 0%,transparent 55%);
+}
+/* Particules lumineuses flottantes */
+.lumiere {
+  position:absolute; border-radius:50%;
+  background:rgba(232,184,75,.2);
+  animation:flotteAnim 8s infinite ease-in-out;
+  pointer-events:none;
+}
+.l1 { width:6px; height:6px; top:20%; left:15%; animation-delay:0s; }
+.l2 { width:4px; height:4px; top:60%; left:75%; animation-delay:2s; }
+.l3 { width:8px; height:8px; top:40%; left:60%; animation-delay:4s; }
+.l4 { width:3px; height:3px; top:75%; left:30%; animation-delay:6s; }
+@keyframes flotteAnim {
+  0%,100% { transform:translateY(0) scale(1); opacity:.4; }
+  50%      { transform:translateY(-20px) scale(1.3); opacity:.9; }
+}
+
+/* ── ÉTAPES DEUIL ── */
+.deuil-steps { margin:2.5rem 0; }
+.deuil-step {
+  display:flex; gap:1.8rem; margin-bottom:2rem;
+  padding:1.8rem; background:var(--blanc);
+  border-radius:var(--r); box-shadow:0 3px 18px var(--ombre);
+  border-left:4px solid var(--vert-olive);
+  transition:transform .25s, box-shadow .25s;
+}
+.deuil-step:hover { transform:translateX(4px); box-shadow:0 6px 28px var(--ombre-forte); }
+.deuil-num {
+  width:52px; height:52px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg,#2d4030,#4a6050);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:1.3rem; font-weight:700;
+  color:var(--or-clair);
+}
+.deuil-content h4 { font-family:var(--serif); font-size:1.1rem; font-weight:600; color:var(--encre); margin-bottom:.5rem; }
+.deuil-content p { font-size:.9rem; color:var(--texte-doux); line-height:1.7; }
+
+/* ── ESPÉRANCE BOX ── */
+.esperance-box {
+  background:linear-gradient(135deg,#1a2a1a,#2d4030);
+  border-radius:var(--r); padding:2.5rem; color:var(--blanc);
+  text-align:center; margin:2rem 0; position:relative; overflow:hidden;
+}
+.esperance-box::before {
+  content:'†'; position:absolute; bottom:-1rem; right:1rem;
+  font-size:8rem; font-weight:300; color:rgba(200,151,31,.1);
+  font-family:var(--serif); pointer-events:none;
+}
+.esperance-box p { font-family:var(--serif); font-size:1.2rem; font-style:italic; line-height:1.75; position:relative; z-index:1; }
+.esperance-box cite { display:block; margin-top:1rem; font-size:.78rem; font-family:var(--caps); letter-spacing:.14em; color:var(--or-clair); font-style:normal; }
+
+/* ── SIDEBAR VERT ── */
+.sidebar-obseques {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 4px 24px var(--ombre); overflow:hidden;
+  position:sticky; top:calc(var(--nav-h)+1.5rem);
+}
+.sidebar-obseques .sh {
+  background:linear-gradient(135deg,#1a2a1a,#2d4030);
+  padding:1.8rem; color:var(--blanc);
+}
+.sidebar-obseques .sh h3 { font-family:var(--serif); font-size:1.15rem; margin-bottom:.3rem; }
+.sidebar-obseques .sh p { font-size:.83rem; opacity:.8; }
+.sidebar-obseques .sb { padding:1.6rem; }
+
+/* ── TÉMOIGNAGE RÉCONFORT ── */
+.reconfort {
+  background:var(--or-pale); border-radius:var(--r); padding:2rem;
+  border-left:4px solid var(--or); margin:1.5rem 0;
+}
+.reconfort p { font-family:var(--serif); font-size:1.05rem; font-style:italic; color:var(--encre); line-height:1.7; }
+
+@media(max-width:900px){
+  .sidebar-obseques { position:static; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero-obseques">
+  <div class="lumiere l1"></div>
+  <div class="lumiere l2"></div>
+  <div class="lumiere l3"></div>
+  <div class="lumiere l4"></div>
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="etapes-de-vie.html">Étapes de vie</a><span>›</span>Obsèques
+    </nav>
+    <div class="hero-eyebrow">Accompagnement dans la foi</div>
+    <h1 class="hero-h1">Organiser<br><em>des obsèques</em></h1>
+    <p class="hero-sub">Dans les moments les plus difficiles, notre communauté se tient à vos côtés avec douceur, prière et espérance en la Résurrection.</p>
+    <div class="hero-verse">
+      « Je suis la Résurrection et la Vie. Celui qui croit en moi, même s'il meurt, vivra. »
+      <cite>Jean 11, 25</cite>
+    </div>
+  </div>
+</div>
+
+<section class="bg-ivoire">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start;">
+      <div>
+        <div class="reveal">
+          <div class="sec-label">Vous accompagner</div>
+          <h2 class="sec-title">Un dernier <em>acte d'amour</em></h2>
+          <div class="sec-divider"></div>
+          <p class="sec-lead">
+            La célébration des obsèques à l'Église a pour but de prier Dieu pour celui ou celle qui vient de nous quitter. C'est un dernier moment de prière pour le défunt, et un temps de réconfort pour ceux qui restent.
+          </p>
+          <p style="color:var(--texte-doux);font-size:.93rem;line-height:1.75;margin-top:1rem;">
+            Les paroissiens de notre communauté chrétienne — une équipe de bénévoles dévoués — se joignent à votre peine en ces jours de deuil. Ils partagent avec vous l'espérance en Jésus Christ ressuscité et vous assurent de leurs prières.
+          </p>
+          <p style="color:var(--texte-doux);font-size:.93rem;line-height:1.75;margin-top:.8rem;">
+            Ce temps permet de dire un <em>« à-Dieu »</em> en remettant tous les souvenirs, bons ou plus difficiles, dans les mains du Seigneur.
+          </p>
+        </div>
+
+        <div class="reconfort reveal">
+          <p>« Nous vous assurons de nos prières. L'Église est là pour vous accompagner dans ce passage, avec tendresse et sans jugement. Venez tels que vous êtes. »</p>
+        </div>
+
+        <!-- Les 4 étapes -->
+        <div class="reveal"><h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin:2rem 0 1rem;">Les étapes pratiques</h3></div>
+
+        <div class="deuil-steps">
+          <div class="deuil-step reveal reveal-delay-1">
+            <div class="deuil-num">1</div>
+            <div class="deuil-content">
+              <h4>Contacter les Pompes Funèbres</h4>
+              <p>Adressez-vous en premier lieu aux Pompes Funèbres de votre choix. Elles se chargeront de se mettre en rapport avec la Maison paroissiale de Sainte Émilie des Causses au <strong>05 65 67 05 74</strong>. Vous n'avez pas à vous en occuper vous-même dans ces moments difficiles.</p>
+            </div>
+          </div>
+          <div class="deuil-step reveal reveal-delay-2">
+            <div class="deuil-num">2</div>
+            <div class="deuil-content">
+              <h4>Préparer ensemble la cérémonie</h4>
+              <p>L'équipe de bénévoles de la paroisse vous contactera pour prendre rendez-vous. La célébration sera conduite par des <strong>laïcs formés et mandatés</strong> par notre évêque. Ensemble, vous préparerez le déroulement de la cérémonie : les lectures, les chants, les intentions, les personnes qui prendront la parole.</p>
+            </div>
+          </div>
+          <div class="deuil-step reveal reveal-delay-3">
+            <div class="deuil-num">3</div>
+            <div class="deuil-content">
+              <h4>Le jour de la cérémonie</h4>
+              <p>Un membre de l'équipe vous accueillera à l'entrée de l'Église et conduira la célébration avec bienveillance. Si vous le souhaitez, nous pourrons vous accompagner <strong>au cimetière</strong> pour vivre un dernier temps de prière et de recueillement.</p>
+            </div>
+          </div>
+          <div class="deuil-step reveal reveal-delay-4">
+            <div class="deuil-num">4</div>
+            <div class="deuil-content">
+              <h4>Prier pour vos défunts</h4>
+              <p>Les personnes qui le veulent sont invitées à la <strong>messe paroissiale du dimanche</strong> ou aux messes en semaine, pour prier avec toute la communauté pour les défunts. Vous pouvez également demander des <strong>messes à intention</strong> pour vos proches disparus — contactez la Maison paroissiale.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="esperance-box reveal">
+          <p>« Ce temps permet de dire un "à-Dieu" en remettant tous les souvenirs, bons ou plus difficiles, dans les mains du Seigneur. Car rien n'est perdu de ce que nous avons aimé. »</p>
+          <cite>— Paroisse Sainte Émilie des Causses</cite>
+        </div>
+
+        <!-- Offrande -->
+        <div class="reveal" style="background:var(--blanc);border-radius:var(--r);padding:1.8rem;box-shadow:0 3px 16px var(--ombre);display:flex;gap:1.5rem;align-items:center;margin-top:1.5rem;">
+          <div style="font-size:2.5rem;flex-shrink:0;">🌿</div>
+          <div>
+            <h4 style="font-family:var(--serif);font-size:1.1rem;color:var(--encre);margin-bottom:.4rem;">Offrande de sépulture</h4>
+            <p style="font-size:.9rem;color:var(--texte-doux);line-height:1.65;">Le montant fixé par le diocèse est de <strong style="color:var(--bordeaux);font-size:1.05rem;">110 €</strong> (17€ pour la messe · 43€ pour la paroisse · 50€ de solidarité diocésaine). <em>Ces offrandes permettent à l'Église de continuer à servir et à accompagner.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-obseques reveal">
+          <div class="sh">
+            <h3>🌿 Nous contacter</h3>
+            <p>L'équipe est là pour vous</p>
+          </div>
+          <div class="sb">
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">📞</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Téléphone</span>
+              <a href="tel:0565670574" style="color:var(--bordeaux);font-size:.95rem;font-weight:700;">05 65 67 05 74</a></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">📍</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Adresse</span>
+              <span style="color:var(--texte-doux);">16 avenue des Lilas<br>12850 Onet-le-Château</span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">🕐</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Horaires accueil</span>
+              <span style="color:var(--texte-doux);">Lun–Ven 9h30–12h<br>& 14h30–17h<br>Sam 9h30–12h</span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">💶</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Offrande de sépulture</span>
+              <span style="color:var(--texte-doux);"><strong style="color:var(--bordeaux);">110 €</strong></span></div>
+            </div>
+            <a href="tel:0565670574" class="btn btn-bordeaux" style="width:100%;text-align:center;justify-content:center;margin-top:1.2rem;display:flex;">📞 Appeler la paroisse</a>
+          </div>
+        </div>
+
+        <!-- Message de réconfort -->
+        <div style="background:var(--or-pale);border-radius:var(--r);padding:1.8rem;margin-top:1.5rem;border-left:4px solid var(--or);" class="reveal">
+          <p style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--encre);line-height:1.65;margin-bottom:.8rem;">« Dieu essuiera toute larme de leurs yeux, et la mort ne sera plus… »</p>
+          <p style="font-family:var(--caps);font-size:.68rem;letter-spacing:.12em;color:var(--pierre);">Apocalypse 21, 4</p>
+        </div>
+
+        <!-- Lien PDF -->
+        <div style="background:var(--blanc);border-radius:var(--r);padding:1.5rem;margin-top:1rem;box-shadow:0 2px 12px var(--ombre);" class="reveal">
+          <p style="font-size:.85rem;color:var(--texte-doux);margin-bottom:1rem;">Retrouvez toutes les informations pratiques dans notre fiche :</p>
+          <a href="pdf/obseques.pdf" target="_blank" class="btn btn-ghost-dark btn-sm" style="display:flex;justify-content:center;">📄 Fiche obsèques (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section espérance -->
+<div style="background:linear-gradient(150deg,#1a2a1a,#2d4030);padding:4rem 0;">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1.5rem;">✦ PRIÈRE POUR LES DÉFUNTS ✦</p>
+    <p style="font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--blanc);line-height:1.8;max-width:600px;margin:0 auto;">
+      « Éternel repos, accorde-lui, Seigneur,<br>et que la lumière sans fin l'illumine.<br>Qu'il repose en paix. »
+    </p>
+    <p style="color:rgba(255,255,255,.45);font-size:.8rem;margin-top:1.5rem;font-family:var(--caps);letter-spacing:.1em;">Prière liturgique traditionnelle</p>
+  </div>
+</div>
+
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer le chemin</div>
+      <h2 class="sec-title">Autres <em>étapes de vie</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="malades.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🤲</div><h3 class="card-title">Service des malades</h3><p class="card-desc">Visites et sacrements pour les personnes malades ou âgées.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="prier.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🕯️</div><h3 class="card-title">Prier ensemble</h3><p class="card-desc">Adoration, Rosaire et groupes de prière.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="soutenir.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">❤️</div><h3 class="card-title">Soutenir la paroisse</h3><p class="card-desc">Aider l'Église à continuer sa mission de service.</p><span class="card-link">Découvrir</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="la-paroisse.html#equipe">Notre équipe</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="prier.html">Prier</a></li><li><a href="contact.html">Nous contacter</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

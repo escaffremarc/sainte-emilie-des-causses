@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catéchisme — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-catech {
+  margin-top:var(--nav-h); min-height:52vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, #2d5016 0%, #4a7a24 45%, var(--or) 100%);
+}
+.hero-catech::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 50% 70% at 85% 50%, rgba(232,184,75,.2) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 30 L42 45 L30 36 L18 45 L22 30 L10 20 L25 20Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+}
+
+/* ── PARCOURS TIMELINE ── */
+.parcours-timeline { position:relative; margin:3rem 0; }
+.parcours-timeline::before {
+  content:''; position:absolute; left:28px; top:0; bottom:0;
+  width:3px; background:linear-gradient(180deg,var(--or),var(--or-clair),rgba(200,151,31,.2));
+  border-radius:2px;
+}
+.parcours-step {
+  display:flex; gap:1.8rem; margin-bottom:2.5rem;
+  position:relative;
+}
+.parcours-dot {
+  width:56px; height:56px; border-radius:50%; flex-shrink:0;
+  background:var(--blanc); border:3px solid var(--or);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; position:relative; z-index:1;
+  box-shadow:0 0 0 6px var(--ivoire), 0 4px 16px rgba(200,151,31,.3);
+}
+.parcours-content {
+  flex:1; background:var(--blanc); border-radius:var(--r);
+  padding:1.6rem; box-shadow:0 3px 18px var(--ombre);
+  border-left:3px solid var(--or);
+  transition:transform .25s, box-shadow .25s;
+}
+.parcours-content:hover { transform:translateX(4px); box-shadow:0 6px 28px var(--ombre-forte); }
+.parcours-level {
+  font-family:var(--caps); font-size:.65rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--or); margin-bottom:.4rem;
+}
+.parcours-content h4 {
+  font-family:var(--serif); font-size:1.15rem; font-weight:600;
+  color:var(--encre); margin-bottom:.6rem;
+}
+.parcours-content p { font-size:.9rem; color:var(--texte-doux); line-height:1.7; }
+
+/* ── GRILLE RUBRIQUES ── */
+.content-2col { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:2rem 0; }
+.rubrique-card {
+  background:var(--blanc); border-radius:var(--r); padding:1.8rem;
+  box-shadow:0 3px 16px var(--ombre); border-top:3px solid var(--vert-olive);
+}
+.rubrique-card h4 { font-family:var(--serif); font-size:1.1rem; color:var(--encre); margin-bottom:.7rem; }
+.rubrique-card p  { font-size:.88rem; color:var(--texte-doux); line-height:1.7; }
+
+/* ── SIDEBAR ── */
+.sidebar-catech {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 4px 24px var(--ombre); overflow:hidden;
+  position:sticky; top:calc(var(--nav-h)+1.5rem);
+}
+.sidebar-catech .sidebar-header {
+  background:linear-gradient(135deg,#2d5016,#4a7a24);
+  padding:1.8rem; color:var(--blanc);
+}
+.sidebar-catech .sidebar-header h3 { font-family:var(--serif); font-size:1.2rem; margin-bottom:.3rem; }
+.sidebar-catech .sidebar-body { padding:1.6rem; }
+
+.ages-table { width:100%; border-collapse:collapse; margin:1.2rem 0; font-size:.85rem; }
+.ages-table th { background:var(--or-pale); color:var(--encre); padding:.6rem .8rem; text-align:left; font-family:var(--caps); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; }
+.ages-table td { padding:.6rem .8rem; border-bottom:1px solid var(--creme); color:var(--texte-doux); }
+.ages-table tr:last-child td { border:none; }
+.ages-table td:first-child { font-weight:700; color:var(--encre); }
+
+@media(max-width:900px){
+  .content-2col { grid-template-columns:1fr; }
+  .sidebar-catech { position:static; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero-catech">
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="etapes-de-vie.html">Étapes de vie</a><span>›</span>Catéchisme
+    </nav>
+    <div class="hero-eyebrow">Foi & formation chrétienne</div>
+    <h1 class="hero-h1">Découvrir Jésus<br><em>au catéchisme</em></h1>
+    <p class="hero-sub">Un parcours joyeux pour que vos enfants rencontrent Jésus, comprennent son message d'amour et s'ouvrent à la foi.</p>
+    <div class="hero-verse">
+      « Le but de la catéchèse est de mettre quelqu'un en communion, en intimité avec Jésus-Christ. »
+      <cite>Directoire Général de la Catéchèse, n°80</cite>
+    </div>
+  </div>
+</div>
+
+<section class="bg-ivoire">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start;">
+
+      <div>
+        <div class="reveal">
+          <div class="sec-label">Du CP au CM2</div>
+          <h2 class="sec-title">Un parcours <em>progressif</em></h2>
+          <div class="sec-divider"></div>
+          <p class="sec-lead">
+            Le catéchisme est proposé aux enfants pour leur permettre de découvrir Jésus, sa vie, ses rencontres, sa mission. Ce parcours les conduit progressivement vers la Première Communion.
+          </p>
+          <p style="color:var(--texte-doux);font-size:.92rem;line-height:1.75;margin-top:1rem;">
+            Une équipe enthousiaste de parents-catéchistes s'engage à transmettre les valeurs de la foi chrétienne. Nous privilégions l'amour, la fraternité, l'action et le plaisir de partager des moments de convivialité et de joie — loin d'un catéchisme par tradition, vers un catéchisme par désir et par rencontre !
+          </p>
+        </div>
+
+        <div class="verset-light reveal">
+          <p>« Réfléchir, prier, fêter pour essayer de répondre à cette question : "Dieu, tu es où ?" … Je suis là ! »</p>
+          <cite>— Devise du catéchisme de la paroisse</cite>
+        </div>
+
+        <!-- Timeline parcours -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin:2rem 0 .5rem;">Le parcours année par année</h3>
+        </div>
+        <div class="parcours-timeline">
+          <div class="parcours-step reveal reveal-delay-1">
+            <div class="parcours-dot">🌱</div>
+            <div class="parcours-content">
+              <div class="parcours-level">CP – CE1</div>
+              <h4>L'éveil à la foi</h4>
+              <p>Des rencontres annuelles en équipe organisées pendant les temps forts de l'année liturgique (Avent, Noël, Pâques…). Ces rencontres permettent de poser les bases et quelques repères de la vie de Jésus. L'éveil à la foi passe d'abord par tout ce qui se vit en famille : les choix, les valeurs, les gestes du quotidien.</p>
+            </div>
+          </div>
+          <div class="parcours-step reveal reveal-delay-2">
+            <div class="parcours-dot">📖</div>
+            <div class="parcours-content">
+              <div class="parcours-level">CE2</div>
+              <h4>Départ vers un parcours catéchèse</h4>
+              <p>Une année d'approfondissement des connaissances chrétiennes avec un parcours permettant de mettre en application le message du Christ dans la vie de tous les jours. Mise en place d'un <strong>cahier fil conducteur</strong> : « mes années caté », contenant les clés essentielles du parcours chrétien sous forme de fiches.</p>
+            </div>
+          </div>
+          <div class="parcours-step reveal reveal-delay-3">
+            <div class="parcours-dot">✨</div>
+            <div class="parcours-content">
+              <div class="parcours-level">CM1 – CM2</div>
+              <h4>L'année qui mène vers la Première Communion</h4>
+              <p>Un parcours adapté pour rentrer dans l'esprit de Jésus : ses rencontres, ses messages de pardon, son dernier repas. Des temps forts pour les grandes fêtes liturgiques. <strong>Une après-midi pour le sacrement du Pardon.</strong> Un weekend de rencontre entre prêtres, catéchistes et enfants pour vivre une expérience d'intériorité spirituelle (prières, réflexion, marche…).</p>
+            </div>
+          </div>
+          <div class="parcours-step reveal reveal-delay-4">
+            <div class="parcours-dot">🎓</div>
+            <div class="parcours-content">
+              <div class="parcours-level">À partir de la 6ème</div>
+              <h4>L'aumônerie</h4>
+              <p>Les enfants peuvent poursuivre la catéchèse en s'inscrivant aux aumôneries :<br>
+              • <strong>Établissements publics</strong> : voir Contacts utiles<br>
+              • <strong>Établissements privés</strong> : la pastorale est proposée au sein même du collège</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rubriques pratiques -->
+        <div class="content-2col reveal">
+          <div class="rubrique-card">
+            <h4>🎉 Notre approche</h4>
+            <p>Abandonnons l'idée d'aller au caté par tradition ! Nous privilégions l'action, la joie, les temps de convivialité. Soyons là, ensemble, pour vivre la rencontre avec Dieu et les autres !</p>
+          </div>
+          <div class="rubrique-card">
+            <h4>👨‍👩‍👧 Le rôle des parents</h4>
+            <p>L'éveil à la foi passe d'abord par la famille : les choix que vous faites, les valeurs auxquelles vous tenez, les gestes que vous posez chaque jour. Vous êtes les premiers catéchistes de vos enfants.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="reveal">
+        <div class="sidebar-catech">
+          <div class="sidebar-header">
+            <h3>✝️ Infos pratiques</h3>
+            <p>Inscription & contacts</p>
+          </div>
+          <div class="sidebar-body">
+            <table class="ages-table">
+              <thead><tr><th>Classe</th><th>Étape</th></tr></thead>
+              <tbody>
+                <tr><td>CP–CE1</td><td>Éveil à la foi</td></tr>
+                <tr><td>CE2</td><td>Parcours catéchèse</td></tr>
+                <tr><td>CM1–CM2</td><td>1ère Communion</td></tr>
+                <tr><td>6ème+</td><td>Aumônerie</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:1.2rem;">
+              <div class="info-row" style="display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+                <span style="font-size:1.1rem;">📍</span>
+                <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Contact</span>
+                <span style="color:var(--texte-doux);">Maison paroissiale<br>16 av. des Lilas, Onet</span></div>
+              </div>
+              <div style="display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+                <span style="font-size:1.1rem;">📞</span>
+                <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Téléphone</span>
+                <a href="tel:0565670574" style="color:var(--bordeaux);">05 65 67 05 74</a></div>
+              </div>
+              <div style="display:flex;gap:.8rem;padding:.6rem 0;font-size:.88rem;">
+                <span style="font-size:1.1rem;">✉️</span>
+                <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Mail</span>
+                <a href="mailto:emiliedescausses@gmail.com" style="color:var(--bordeaux);font-size:.82rem;">emiliedescausses@gmail.com</a></div>
+              </div>
+            </div>
+            <a href="contact.html" class="btn btn-bordeaux" style="width:100%;text-align:center;justify-content:center;margin-top:1.2rem;">Inscrire mon enfant</a>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#2d5016,#4a7a24);border-radius:var(--r);padding:2rem;margin-top:1.5rem;color:var(--blanc);text-align:center;" class="reveal">
+          <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;line-height:1.6;opacity:.9;">« Dieu, tu es où ? »</p>
+          <p style="font-size:1.5rem;font-weight:800;margin:.5rem 0;color:var(--or-clair);">Je suis là !</p>
+          <p style="font-size:.82rem;opacity:.7;">Devise du catéchisme de la paroisse</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:linear-gradient(135deg,#2d5016,#4a7a24);padding:3.5rem 0;">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1rem;">✦ PRIÈRE ✦</p>
+    <p style="font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--blanc);line-height:1.75;max-width:580px;margin:0 auto;">
+      « Laissez venir à moi les petits enfants, ne les empêchez pas car c'est à leurs pareils qu'appartient le Royaume de Dieu. »
+    </p>
+    <p style="font-family:var(--caps);font-size:.72rem;letter-spacing:.12em;color:var(--or-clair);margin-top:1rem;">Marc 10, 14</p>
+  </div>
+</div>
+
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer le chemin</div>
+      <h2 class="sec-title">Autres <em>étapes de vie</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="bapteme.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">💧</div><h3 class="card-title">Baptême</h3><p class="card-desc">Accueillir son enfant dans la famille de Dieu.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="reconciliation.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🕊️</div><h3 class="card-title">Réconciliation</h3><p class="card-desc">Le sacrement du pardon de Dieu.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="mariage.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">💍</div><h3 class="card-title">Mariage</h3><p class="card-desc">Célébrer votre amour devant Dieu.</p><span class="card-link">Découvrir</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="la-paroisse.html#equipe">Notre équipe</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="prier.html">Prier</a></li><li><a href="contact.html">Nous contacter</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

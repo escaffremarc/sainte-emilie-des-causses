@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baptême — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PAGE SPÉCIFIQUE BAPTÊME ── */
+.hero-bapteme {
+  margin-top:var(--nav-h);
+  min-height:52vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, #0e3d5c 0%, #1a6080 40%, var(--bordeaux) 100%);
+}
+.hero-bapteme::before {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(200,151,31,.18) 0%,transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.2' fill='rgba(255,255,255,0.12)'/%3E%3C/svg%3E");
+}
+/* Ondes d'eau animées */
+.water-waves {
+  position:absolute; bottom:0; left:0; right:0; height:80px; overflow:hidden;
+}
+.wave {
+  position:absolute; bottom:0; left:-50%; width:200%;
+  height:80px; border-radius:40%;
+  animation:waveAnim 6s infinite linear;
+}
+.wave-1 { background:rgba(255,255,255,.06); animation-duration:6s; }
+.wave-2 { background:rgba(255,255,255,.04); animation-duration:9s; animation-direction:reverse; bottom:10px; }
+.wave-3 { background:rgba(200,151,31,.07); animation-duration:12s; bottom:5px; }
+@keyframes waveAnim {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}
+
+/* ── CONTENU ── */
+.page-content { padding:5rem 0; }
+.content-grid { display:grid; grid-template-columns:2fr 1fr; gap:4rem; align-items:start; }
+
+/* ── ÉTAPES ── */
+.etapes-process { list-style:none; margin:2.5rem 0; }
+.etape-step {
+  display:flex; gap:1.5rem; padding:1.8rem 0;
+  border-bottom:1px solid var(--creme);
+  position:relative;
+}
+.etape-step:last-child { border-bottom:none; }
+.step-num {
+  width:48px; height:48px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg,var(--or),var(--or-clair));
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:1.2rem; font-weight:700;
+  color:var(--encre); box-shadow:0 4px 12px rgba(200,151,31,.35);
+}
+.step-content h4 {
+  font-family:var(--serif); font-size:1.15rem; font-weight:600;
+  color:var(--encre); margin-bottom:0.5rem;
+}
+.step-content p { font-size:.9rem; color:var(--texte-doux); line-height:1.7; }
+
+/* ── SIDEBAR ── */
+.sidebar-card {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 4px 24px var(--ombre);
+  overflow:hidden; position:sticky; top:calc(var(--nav-h) + 1.5rem);
+}
+.sidebar-header {
+  background:linear-gradient(135deg,#0e3d5c,#1a6080);
+  padding:1.8rem; color:var(--blanc);
+}
+.sidebar-header h3 { font-family:var(--serif); font-size:1.2rem; margin-bottom:.3rem; }
+.sidebar-header p { font-size:.83rem; opacity:.8; }
+.sidebar-body { padding:1.6rem; }
+.info-row {
+  display:flex; gap:.8rem; align-items:flex-start;
+  padding:.65rem 0; border-bottom:1px solid var(--creme); font-size:.88rem;
+}
+.info-row:last-child { border-bottom:none; }
+.info-icon { font-size:1.1rem; flex-shrink:0; margin-top:.05rem; }
+.info-label { font-weight:700; color:var(--encre); display:block; font-size:.8rem;
+  font-family:var(--caps); letter-spacing:.06em; text-transform:uppercase; margin-bottom:.1rem; }
+.info-val { color:var(--texte-doux); line-height:1.5; }
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background:linear-gradient(135deg,var(--or-pale),var(--creme));
+  border-radius:var(--r); padding:2rem;
+  border-left:4px solid var(--or); margin:2rem 0;
+}
+.highlight-box h4 { font-family:var(--serif); font-size:1.1rem; color:var(--encre); margin-bottom:.7rem; }
+.highlight-box p, .highlight-box li { font-size:.9rem; color:var(--texte-doux); line-height:1.7; }
+.highlight-box ul { list-style:none; }
+.highlight-box li::before { content:'✦ '; color:var(--or); font-size:.75rem; }
+
+/* ── CONTACT CTA ── */
+.contact-cta {
+  background:linear-gradient(135deg,var(--bordeaux),#4a1010);
+  border-radius:var(--r); padding:2.5rem;
+  text-align:center; color:var(--blanc); margin-top:2rem;
+}
+.contact-cta h3 { font-family:var(--serif); font-size:1.3rem; margin-bottom:.6rem; }
+.contact-cta p { font-size:.9rem; opacity:.85; line-height:1.65; margin-bottom:1.5rem; }
+
+@media(max-width:900px){
+  .content-grid { grid-template-columns:1fr; }
+  .sidebar-card { position:static; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero-bapteme">
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>›</span>
+      <a href="etapes-de-vie.html">Étapes de vie</a>
+      <span>›</span>
+      Baptême
+    </nav>
+    <div class="hero-eyebrow">Sacrement de l'initiation chrétienne</div>
+    <h1 class="hero-h1">Le <em>Baptême</em></h1>
+    <p class="hero-sub">Accueillir un enfant dans la grande famille de Dieu. Un jour inoubliable, une vie nouvelle qui commence.</p>
+    <div class="hero-verse">
+      « Allez, faites de toutes les nations des disciples, les baptisant au nom du Père, du Fils et du Saint-Esprit. »
+      <cite>Matthieu 28, 19</cite>
+    </div>
+  </div>
+  <div class="water-waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+  </div>
+</div>
+
+<!-- ── CONTENU ── -->
+<section class="page-content bg-ivoire">
+  <div class="container">
+    <div class="content-grid">
+
+      <!-- Colonne principale -->
+      <div>
+        <div class="reveal">
+          <div class="sec-label">Pour les enfants de 0 à 3 ans</div>
+          <h2 class="sec-title">Baptiser <em>son enfant</em></h2>
+          <div class="sec-divider"></div>
+          <p class="sec-lead">
+            Le baptême est le premier des sacrements, la porte d'entrée dans la vie chrétienne. Pour votre enfant, c'est un acte d'amour : lui ouvrir les bras de Dieu, lui donner une famille spirituelle et lui promettre de l'accompagner dans la foi.
+          </p>
+          <p style="color:var(--texte-doux);font-size:.93rem;line-height:1.75;margin-top:1rem;">
+            <em>Si votre enfant est plus grand (à partir de 4 ans), veuillez vous reporter à la page <a href="catechisme.html" style="color:var(--bordeaux);font-weight:600;">Catéchisme</a>.</em>
+          </p>
+        </div>
+
+        <div class="verset-light reveal">
+          <p>« L'Église et les parents privent l'enfant d'un bien inestimable si, peu après sa naissance, ils ne lui confèrent pas le Baptême. »</p>
+          <cite>— Catéchisme de l'Église Catholique</cite>
+        </div>
+
+        <!-- Étapes -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin-bottom:.5rem;">Comment préparer le baptême ?</h3>
+          <p style="color:var(--texte-doux);font-size:.9rem;margin-bottom:1rem;">Quatre étapes simples pour vivre un beau jour de baptême :</p>
+        </div>
+
+        <ol class="etapes-process">
+          <li class="etape-step reveal reveal-delay-1">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Choisir une date</h4>
+              <p>Les baptêmes sont célébrés <strong>tous les dimanches</strong> à l'Église Saint-Joseph-Artisan d'Onet-le-Château, après la messe de 10h30 (début vers 11h45). Nous limitons à <strong>trois baptêmes par dimanche</strong>. Aucune réservation par téléphone — merci de nous contacter par mail ou en personne.</p>
+            </div>
+          </li>
+          <li class="etape-step reveal reveal-delay-2">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Inscrire son enfant</h4>
+              <p>Rendez-vous à la Maison paroissiale ou envoyez un mail à <a href="mailto:bapteme.emiliedescausses@gmail.com" style="color:var(--bordeaux);font-weight:600;">bapteme.emiliedescausses@gmail.com</a>.<br>
+              Prévoyez <strong>au moins 3 mois à l'avance</strong>. Le dossier comprend un imprimé de demande + une copie de l'acte de naissance ou du livret de famille.</p>
+            </div>
+          </li>
+          <li class="etape-step reveal reveal-delay-3">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>La soirée de préparation</h4>
+              <p>Après l'inscription, vous participerez à une <strong>soirée de préparation au baptême</strong> (mercredi, 20h15 – 22h15). Plusieurs dates sont proposées dans l'année. Un moment convivial pour comprendre le sens du baptême et préparer la célébration.</p>
+            </div>
+          </li>
+          <li class="etape-step reveal reveal-delay-4">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Rencontrer le célébrant</h4>
+              <p>Une à deux semaines avant la cérémonie, le prêtre ou diacre qui conduira le baptême vous contactera pour <strong>préparer ensemble la célébration</strong>. Ne soyez pas inquiets : les célébrations les plus simples sont souvent les plus belles !</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Parrain/Marraine -->
+        <div class="highlight-box reveal">
+          <h4>💫 Choisir un parrain et une marraine</h4>
+          <p>Pour l'Église, les parrains et marraines ont un rôle déterminant. Ils sont les garants de l'authenticité de votre démarche et s'engagent à accompagner l'enfant dans sa vie spirituelle.</p>
+          <ul style="margin-top:.8rem;">
+            <li>Ils doivent être <strong>baptisés eux-mêmes</strong></li>
+            <li>Avoir <strong>au moins 16 ans</strong></li>
+            <li>Les parents de l'enfant <strong>ne peuvent pas</strong> être parrains/marraines</li>
+            <li>Un seul parrain <em>ou</em> une seule marraine suffit — ou les deux</li>
+            <li>Leur mission : ami, confident, témoin de foi tout au long de la vie</li>
+          </ul>
+        </div>
+
+        <!-- Offrande -->
+        <div class="reveal">
+          <div style="background:var(--blanc);border-radius:var(--r);padding:1.8rem;box-shadow:0 3px 16px var(--ombre);display:flex;gap:1.5rem;align-items:center;">
+            <div style="font-size:2.5rem;flex-shrink:0;">🕊️</div>
+            <div>
+              <h4 style="font-family:var(--serif);font-size:1.1rem;color:var(--encre);margin-bottom:.4rem;">Offrande de baptême</h4>
+              <p style="font-size:.9rem;color:var(--texte-doux);line-height:1.65;">Le montant fixé par le diocèse est de <strong style="color:var(--bordeaux);font-size:1.1rem;">50 €</strong>, à régler lors de la soirée de préparation. Votre don sert directement à l'entretien des bâtiments et aux activités paroissiales. <em>Le célébrant ne perçoit aucune somme.</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="reveal">
+        <div class="sidebar-card">
+          <div class="sidebar-header">
+            <h3>💧 Infos pratiques</h3>
+            <p>Tout ce qu'il faut savoir</p>
+          </div>
+          <div class="sidebar-body">
+            <div class="info-row">
+              <span class="info-icon">📅</span>
+              <div>
+                <span class="info-label">Quand ?</span>
+                <span class="info-val">Tous les dimanches après la messe de 10h30 (vers 11h45)</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">⛪</span>
+              <div>
+                <span class="info-label">Où ?</span>
+                <span class="info-val">Église Saint-Joseph-Artisan<br>Onet-le-Château</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">👶</span>
+              <div>
+                <span class="info-label">Pour qui ?</span>
+                <span class="info-val">Enfants de 0 à 3 ans<br>(au-delà → Catéchisme)</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">⏰</span>
+              <div>
+                <span class="info-label">Délai</span>
+                <span class="info-val">Contacter au moins<br><strong>3 mois à l'avance</strong></span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">🔢</span>
+              <div>
+                <span class="info-label">Limite</span>
+                <span class="info-val">3 baptêmes maximum par dimanche</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">💶</span>
+              <div>
+                <span class="info-label">Offrande</span>
+                <span class="info-val"><strong style="color:var(--bordeaux);">50 €</strong> — à régler lors de la soirée de préparation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-cta reveal">
+          <h3>Prêt à nous contacter ?</h3>
+          <p>Pour inscrire votre enfant ou poser vos questions, l'équipe paroissiale est là pour vous accueillir chaleureusement.</p>
+          <a href="mailto:bapteme.emiliedescausses@gmail.com" class="btn btn-or" style="display:inline-flex;margin-bottom:.7rem;">
+            ✉️ Écrire pour un baptême
+          </a>
+          <br>
+          <a href="tel:0565670574" class="btn btn-ghost" style="display:inline-flex;">
+            📞 05 65 67 05 74
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── VERSET FINAL ── -->
+<div style="background:linear-gradient(135deg,#0e3d5c,#1a6080);padding:3.5rem 0;">
+  <div class="container-sm text-center">
+    <div class="reveal" style="color:var(--blanc);">
+      <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1rem;">✦ PRIÈRE ✦</p>
+      <p style="font-family:var(--serif);font-size:1.35rem;font-style:italic;line-height:1.75;max-width:600px;margin:0 auto;">
+        « Seigneur, accueille cet enfant dans ta lumière. Qu'il grandisse dans ta foi, ton amour et ta joie. »
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── AUTRES ÉTAPES ── -->
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer le chemin</div>
+      <h2 class="sec-title">Autres <em>étapes de vie</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="catechisme.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">✝️</div>
+          <h3 class="card-title">Catéchisme</h3>
+          <p class="card-desc">Découvrir Jésus du CP jusqu'à la Première Communion.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+      <a href="reconciliation.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">🕊️</div>
+          <h3 class="card-title">Réconciliation</h3>
+          <p class="card-desc">Le sacrement du pardon et de la miséricorde de Dieu.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+      <a href="mariage.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">💍</div>
+          <h3 class="card-title">Mariage</h3>
+          <p class="card-desc">Célébrer votre amour dans la joie et devant Dieu.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Sainte Émilie des Causses</div>
+        <p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p>
+        <div class="footer-contact">
+          <p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p>
+          <p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p>
+          <p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="la-paroisse.html#equipe">Notre équipe</a></li><li><a href="la-paroisse.html#relais">Les 6 relais</a></li></ul></div>
+      <div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="prier.html">Prier ensemble</a></li><li><a href="s-engager.html">S'engager</a></li><li><a href="contact.html">Nous contacter</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Paroisse Sainte Émilie des Causses</p>
+      <p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

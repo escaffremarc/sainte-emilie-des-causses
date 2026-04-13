@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S'engager — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero-engager {
+  margin-top:var(--nav-h); min-height:58vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(140deg,#1a2a0a 0%,#2d4a15 45%,#4a7a24 100%);
+}
+.hero-engager::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 65% at 85% 40%, rgba(200,151,31,.22) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 55% at 5% 80%, rgba(255,255,255,.04) 0%,transparent 55%);
+}
+/* Mains ouvertes SVG animées */
+.mains-wrap {
+  position:absolute; right:6%; top:50%; transform:translateY(-50%);
+  opacity:.13; pointer-events:none; animation:mainsAnim 5s ease-in-out infinite;
+}
+@keyframes mainsAnim {
+  0%,100%{ transform:translateY(-50%) rotate(-4deg) scale(1); }
+  50%    { transform:translateY(-60%) rotate(4deg) scale(1.05); }
+}
+
+/* ── GRILLE MISSIONS ── */
+.missions-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem;
+  margin:2.5rem 0;
+}
+.mission-item {
+  background:var(--blanc); border-radius:var(--r);
+  padding:1.6rem; box-shadow:0 3px 16px var(--ombre);
+  border-top:3px solid var(--or);
+  transition:transform .25s, box-shadow .25s;
+  cursor:default;
+}
+.mission-item:hover {
+  transform:translateY(-5px);
+  box-shadow:0 8px 28px var(--ombre-forte);
+  border-top-color:var(--bordeaux);
+}
+.mission-item .m-icon { font-size:1.8rem; margin-bottom:.8rem; display:block; }
+.mission-item h4 { font-family:var(--serif); font-size:1rem; font-weight:600; color:var(--encre); margin-bottom:.4rem; }
+.mission-item p  { font-size:.84rem; color:var(--texte-doux); line-height:1.6; }
+
+/* ── CITATION PAPE ── */
+.pape-band {
+  background:linear-gradient(135deg,#1a2a0a,#2d4a15);
+  padding:4.5rem 0; text-align:center;
+  position:relative; overflow:hidden;
+}
+.pape-band::before {
+  content:'"'; position:absolute;
+  left:5%; top:50%; transform:translateY(-50%);
+  font-family:var(--serif); font-size:16rem; font-weight:700;
+  color:rgba(200,151,31,.07); line-height:1; pointer-events:none;
+}
+
+/* ── FORMULAIRE CTA ── */
+.cta-engager {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 6px 32px var(--ombre-forte);
+  padding:3rem; text-align:center;
+  border-top:4px solid var(--or);
+  max-width:620px; margin:0 auto;
+}
+.cta-engager h3 { font-family:var(--serif); font-size:1.6rem; color:var(--encre); margin-bottom:.6rem; }
+.cta-engager p  { color:var(--texte-doux); font-size:.95rem; line-height:1.7; margin-bottom:1.8rem; }
+.mail-display {
+  background:var(--or-pale); border-radius:8px; padding:1rem 1.5rem;
+  font-family:var(--caps); font-size:.85rem; letter-spacing:.06em;
+  color:var(--bordeaux); border:1px solid rgba(200,151,31,.3);
+  margin:1rem 0; word-break:break-all;
+}
+
+/* ── TÉMOIGNAGE ── */
+.temoignage-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:2.5rem 0; }
+.temo-card {
+  background:var(--blanc); border-radius:var(--r);
+  padding:2rem; box-shadow:0 3px 16px var(--ombre);
+  border-left:4px solid var(--or); position:relative;
+}
+.temo-card::before {
+  content:'"'; font-family:var(--serif); font-size:4rem;
+  color:var(--or-pale); position:absolute; top:.5rem; right:1rem;
+  line-height:1; pointer-events:none;
+}
+.temo-text { font-family:var(--serif); font-size:1rem; font-style:italic; color:var(--encre); line-height:1.7; margin-bottom:1rem; }
+.temo-author { font-family:var(--caps); font-size:.68rem; letter-spacing:.1em; color:var(--pierre); }
+
+/* ── DOMAINES ── */
+.domaines-list {
+  display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin:1.5rem 0;
+}
+.domaine-row {
+  display:flex; align-items:center; gap:.7rem;
+  padding:.65rem .9rem; background:var(--creme);
+  border-radius:8px; font-size:.88rem; color:var(--texte-doux);
+  transition:background .2s;
+}
+.domaine-row:hover { background:var(--or-pale); }
+.domaine-row::before { content:'✦'; color:var(--or); font-size:.65rem; flex-shrink:0; }
+
+@media(max-width:900px){
+  .missions-grid    { grid-template-columns:1fr 1fr; }
+  .temoignage-grid  { grid-template-columns:1fr; }
+  .domaines-list    { grid-template-columns:1fr; }
+}
+@media(max-width:600px){
+  .missions-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html" class="active">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero-engager">
+  <div class="mains-wrap">
+    <svg width="260" height="260" viewBox="0 0 260 260" fill="none">
+      <path d="M80 200 C60 180 40 150 50 120 C55 105 70 100 85 108 L85 60 C85 52 91 46 99 46 C107 46 113 52 113 60 L113 120 C118 115 126 112 134 115 C140 112 148 112 154 118 C160 115 168 117 172 124 C180 120 190 124 192 134 L192 170 C192 188 178 200 160 200 Z" fill="white"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>S'engager
+    </nav>
+    <div class="hero-eyebrow">Vie communautaire</div>
+    <h1 class="hero-h1">Mettre son talent<br><em>au service</em></h1>
+    <p class="hero-sub">Il y a mille et une façons de partager du temps avec la communauté chrétienne. Quel que soit le temps dont vous disposez, votre place est ici.</p>
+    <div class="hero-verse">
+      « Tous peuvent participer de quelque manière à la vie ecclésiale, tous peuvent faire partie de la communauté. »
+      <cite>Pape François, La joie de l'Évangile</cite>
+    </div>
+    <a href="#contact-engager" class="btn btn-or" style="margin-top:1.2rem;">Je veux m'engager</a>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="reveal text-center" style="max-width:780px;margin:0 auto;">
+      <div class="sec-label">Ensemble nous construisons l'Église</div>
+      <h2 class="sec-title">Votre paroisse<br><em>a besoin de vous !</em></h2>
+      <div class="sec-divider" style="margin:1.2rem auto;"></div>
+      <p class="sec-lead" style="margin:0 auto;">Mettre son talent au service de sa paroisse permet de donner du sens à notre chemin sur la terre. Car ensemble nous construisons l'Église de demain — et chaque geste, même petit, compte aux yeux de Dieu.</p>
+    </div>
+
+    <!-- Missions -->
+    <div class="missions-grid">
+      <div class="mission-item reveal reveal-delay-1">
+        <span class="m-icon">✝️</span>
+        <h4>Transmettre la foi</h4>
+        <p>Catéchisme, éveil à la foi, accompagnement d'un catéchumène adulte vers le baptême.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-2">
+        <span class="m-icon">💍</span>
+        <h4>Préparer les sacrements</h4>
+        <p>Participer aux équipes de préparation au mariage ou au baptême — un service précieux.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-3">
+        <span class="m-icon">🎵</span>
+        <h4>Animation liturgique</h4>
+        <p>Lecteurs, chants, fleurissement, entretien et ouverture des églises. On a besoin de tout le monde !</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-1">
+        <span class="m-icon">📢</span>
+        <h4>Communication</h4>
+        <p>Newsletter, page Facebook, feuilles d'annonces, site internet. Aidez à diffuser la Bonne Nouvelle.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-2">
+        <span class="m-icon">🤝</span>
+        <h4>Accueil</h4>
+        <p>Accueillir à l'église et à la Maison paroissiale. Un sourire peut tout changer pour quelqu'un qui arrive.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-3">
+        <span class="m-icon">🎉</span>
+        <h4>Organiser des événements</h4>
+        <p>Journée d'amitié, pèlerinages, sorties paroissiales, fêtes communautaires… la vie ensemble !</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-1">
+        <span class="m-icon">🫂</span>
+        <h4>Équipes de fraternité</h4>
+        <p>Convivialité, accueil des nouveaux, soutien des familles isolées. La fraternité concrète.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-2">
+        <span class="m-icon">🤲</span>
+        <h4>Visiter les malades</h4>
+        <p>Apporter la communion, rendre visite aux personnes isolées ou âgées dans nos villages.</p>
+      </div>
+      <div class="mission-item reveal reveal-delay-3">
+        <span class="m-icon">🌿</span>
+        <h4>Accompagner en deuil</h4>
+        <p>Être présent auprès des familles qui traversent l'épreuve de la perte d'un proche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CITATION PAPE ── -->
+<div class="pape-band">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1.5rem;">✦ PAPE FRANÇOIS · JMJ 2013 ✦</p>
+    <p style="font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);font-style:italic;color:var(--blanc);line-height:1.75;max-width:680px;margin:0 auto;">
+      « Ne restez pas au balcon de la vie —<br>
+      Jésus n'y est pas resté. Il s'y est engagé !<br>
+      <span style="color:var(--or-clair);">Engagez-vous y comme l'a fait Jésus. »</span>
+    </p>
+    <p style="font-family:var(--caps);font-size:.68rem;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-top:1.2rem;">Aux jeunes des Journées Mondiales de la Jeunesse · Rio 2013</p>
+  </div>
+</div>
+
+<!-- ── DOMAINES D'ACTION ── -->
+<section class="bg-warm">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div class="reveal">
+        <div class="sec-label">Tous les domaines</div>
+        <h2 class="sec-title">Où puis-je <em>m'engager ?</em></h2>
+        <div class="sec-divider"></div>
+        <p style="color:var(--texte-doux);font-size:.93rem;line-height:1.75;margin-bottom:1.5rem;">Voici l'ensemble des domaines dans lesquels la paroisse a besoin de bénévoles. Vous n'avez pas à tout faire — juste ce qui vous touche le cœur :</p>
+        <div class="domaines-list">
+          <div class="domaine-row">Catéchisme & éveil à la foi</div>
+          <div class="domaine-row">Accompagnement catéchumènes</div>
+          <div class="domaine-row">Préparation au mariage</div>
+          <div class="domaine-row">Préparation au baptême</div>
+          <div class="domaine-row">Lecteurs & animation messe</div>
+          <div class="domaine-row">Chants liturgiques</div>
+          <div class="domaine-row">Fleurissement des églises</div>
+          <div class="domaine-row">Entretien & ouverture</div>
+          <div class="domaine-row">Communication & réseaux</div>
+          <div class="domaine-row">Accueil paroissial</div>
+          <div class="domaine-row">Pèlerinages & sorties</div>
+          <div class="domaine-row">Équipes de fraternité</div>
+          <div class="domaine-row">Communion aux malades</div>
+          <div class="domaine-row">Accompagnement familles deuil</div>
+          <div class="domaine-row">Actions solidaires</div>
+          <div class="domaine-row">… et vos propres idées !</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="temoignage-grid" style="grid-template-columns:1fr;gap:1.2rem;">
+          <div class="temo-card">
+            <p class="temo-text">S'engager dans la paroisse m'a appris à donner sans compter. Ce que je reçois en retour est bien plus grand que ce que je donne.</p>
+            <p class="temo-author">Un bénévole catéchiste de la paroisse</p>
+          </div>
+          <div class="temo-card">
+            <p class="temo-text">J'ai commencé par fleurir l'église un samedi par mois. Aujourd'hui je me sens vraiment faire partie de cette belle communauté.</p>
+            <p class="temo-author">Une paroissienne bénévole</p>
+          </div>
+          <div class="temo-card">
+            <p class="temo-text">Visiter les personnes âgées seules, c'est une grâce. On croit qu'on leur apporte quelque chose — c'est eux qui nous transforment.</p>
+            <p class="temo-author">Bénévole du service des malades</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT S'ENGAGER ── -->
+<section class="bg-ivoire" id="contact-engager">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <div class="cta-engager">
+        <span style="font-size:3rem;display:block;margin-bottom:1rem;">❤️</span>
+        <h3>Prêt à nous rejoindre ?</h3>
+        <p>Vous êtes intéressé et disponible pour soutenir l'une de ces activités ? Merci de bien vouloir vous signaler par mail à la paroisse en mentionnant en objet : <strong>« Au service de la paroisse »</strong>.</p>
+        <div class="mail-display">emiliedescausses@gmail.com</div>
+        <p style="font-size:.85rem;color:var(--pierre);margin-bottom:1.5rem;">Ou venez directement nous rencontrer à la Maison paroissiale — vous serez accueillis chaleureusement !</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="mailto:emiliedescausses@gmail.com?subject=Au service de la paroisse" class="btn btn-bordeaux">✉️ Écrire un mail</a>
+          <a href="tel:0565670574" class="btn btn-ghost-dark">📞 05 65 67 05 74</a>
+        </div>
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--creme);">
+          <a href="pdf/mettre-son-talent-au-service-de-la-paroisse.pdf" target="_blank" class="btn btn-ghost-dark btn-sm">📄 Fiche "Mettre son talent" (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIENS ── -->
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Aller plus loin</div>
+      <h2 class="sec-title">Autres façons <em>de s'impliquer</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="solidarite.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">🌍</div>
+          <h3 class="card-title">Actions solidaires</h3>
+          <p class="card-desc">Secours Catholique, CCFD, Petits Frères des Pauvres — la solidarité en acte.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+      <a href="soutenir.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">💶</div>
+          <h3 class="card-title">Soutenir la paroisse</h3>
+          <p class="card-desc">Denier de l'Église, dons, offrandes — la générosité qui fait vivre la communauté.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+      <a href="prier.html" class="card card-v" style="text-decoration:none;color:inherit;">
+        <div class="card-body" style="padding:2rem;">
+          <div class="card-icon-wrap">🕯️</div>
+          <h3 class="card-title">Prier ensemble</h3>
+          <p class="card-desc">Rejoindre un groupe de prière — l'engagement le plus simple et le plus profond.</p>
+          <span class="card-link">Découvrir</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="index.html">Accueil</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>S'engager</h4><ul><li><a href="s-engager.html">Servir la paroisse</a></li><li><a href="solidarite.html">Solidarité</a></li><li><a href="soutenir.html">Soutenir</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

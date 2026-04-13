@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réconciliation — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero-pardon {
+  margin-top:var(--nav-h); min-height:58vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(150deg,#1a0a0a 0%,#3d1010 50%,#6b1d1d 100%);
+}
+.hero-pardon::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 45%, rgba(200,151,31,.20) 0%,transparent 65%),
+    radial-gradient(ellipse 35% 50% at 10% 20%, rgba(255,255,255,.05) 0%,transparent 55%);
+}
+/* Colombe animée SVG */
+.colombe-wrap {
+  position:absolute; right:8%; top:50%; transform:translateY(-50%);
+  opacity:.12; pointer-events:none;
+}
+.colombe-wrap svg { width:280px; height:280px; animation:colombeFloat 7s ease-in-out infinite; }
+@keyframes colombeFloat {
+  0%,100% { transform:translateY(0) rotate(-3deg); }
+  50%      { transform:translateY(-18px) rotate(3deg); }
+}
+
+/* ── RAYON DE LUMIÈRE ── */
+.rayon {
+  position:absolute; top:0; right:25%; width:2px; height:100%;
+  background:linear-gradient(180deg,transparent,rgba(200,151,31,.25),transparent);
+  pointer-events:none;
+}
+
+/* ── GRILLE CONTENU ── */
+.two-col { display:grid; grid-template-columns:2fr 1fr; gap:4rem; align-items:start; }
+
+/* ── QUESTIONS / RÉPONSES ── */
+.qr-block {
+  background:var(--blanc); border-radius:var(--r); padding:2rem;
+  box-shadow:0 4px 20px var(--ombre); margin-bottom:1.5rem;
+  border-left:4px solid var(--bordeaux);
+  transition:transform .25s, box-shadow .25s;
+}
+.qr-block:hover { transform:translateX(4px); box-shadow:0 8px 28px var(--ombre-forte); }
+.qr-q {
+  font-family:var(--serif); font-size:1.15rem; font-weight:600;
+  color:var(--bordeaux); margin-bottom:.7rem; display:flex; align-items:center; gap:.7rem;
+}
+.qr-q::before { content:'?'; width:28px; height:28px; border-radius:50%; background:var(--bordeaux);
+  color:var(--blanc); font-size:.88rem; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; font-family:var(--caps); font-weight:700; }
+.qr-a { font-size:.92rem; color:var(--texte-doux); line-height:1.75; }
+
+/* ── COMMENT SE CONFESSER ── */
+.confesser-steps { margin:2rem 0; }
+.cf-step {
+  display:flex; gap:1.5rem; padding:1.5rem;
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 3px 14px var(--ombre); margin-bottom:1.2rem;
+  transition:transform .25s;
+}
+.cf-step:hover { transform:translateX(4px); }
+.cf-icon {
+  width:50px; height:50px; border-radius:12px; flex-shrink:0;
+  background:linear-gradient(135deg,var(--or-pale),var(--creme));
+  display:flex; align-items:center; justify-content:center; font-size:1.5rem;
+}
+.cf-text h4 { font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--encre); margin-bottom:.4rem; }
+.cf-text p  { font-size:.88rem; color:var(--texte-doux); line-height:1.65; }
+
+/* ── SIDEBAR ROUGE ── */
+.sidebar-pardon {
+  background:var(--blanc); border-radius:var(--r);
+  box-shadow:0 4px 24px var(--ombre); overflow:hidden;
+  position:sticky; top:calc(var(--nav-h)+1.5rem);
+}
+.sidebar-pardon .sh {
+  background:linear-gradient(135deg,#1a0a0a,var(--bordeaux));
+  padding:1.8rem; color:var(--blanc);
+}
+.sidebar-pardon .sh h3 { font-family:var(--serif); font-size:1.2rem; margin-bottom:.3rem; }
+.sidebar-pardon .sb { padding:1.6rem; }
+
+/* ── EXAMEN DE CONSCIENCE ── */
+.examen-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+.examen-item {
+  background:var(--creme); border-radius:10px; padding:1.2rem;
+  font-size:.85rem; color:var(--texte-doux); line-height:1.55;
+  border-left:3px solid var(--or);
+}
+.examen-item strong { color:var(--encre); display:block; margin-bottom:.3rem; font-family:var(--serif); font-size:.95rem; }
+
+/* ── MISÉRICORDE BAND ── */
+.misericorde-band {
+  background:linear-gradient(135deg,var(--bordeaux),#3d1010);
+  padding:4rem 0; text-align:center;
+}
+
+@media(max-width:900px){
+  .two-col { grid-template-columns:1fr; }
+  .sidebar-pardon { position:static; }
+  .examen-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero-pardon">
+  <div class="rayon"></div>
+  <div class="colombe-wrap">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 40 C80 40 50 55 45 80 C40 100 55 120 75 125 L65 160 L100 140 L135 160 L125 125 C145 120 160 100 155 80 C150 55 120 40 100 40Z" fill="white" opacity=".6"/>
+      <path d="M100 40 C85 35 60 30 40 50 C20 70 35 90 55 85 L45 100 L75 95 L100 40Z" fill="white" opacity=".5"/>
+      <circle cx="88" cy="68" r="4" fill="white" opacity=".8"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="etapes-de-vie.html">Étapes de vie</a><span>›</span>Réconciliation
+    </nav>
+    <div class="hero-eyebrow">Sacrement de la miséricorde</div>
+    <h1 class="hero-h1">Demander<br><em>pardon</em></h1>
+    <p class="hero-sub">Le pardon de Dieu est toujours possible. En se reconnaissant pécheur, nous découvrons que l'Amour infini de Dieu est toujours le plus fort.</p>
+    <div class="hero-verse">
+      « Ceux à qui vous remettrez les péchés, ils leur seront remis. »
+      <cite>Jean 20, 23</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTENU ── -->
+<section class="bg-ivoire">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="reveal">
+          <div class="sec-label">Sacrement de réconciliation</div>
+          <h2 class="sec-title">Le pardon de <em>Dieu</em></h2>
+          <div class="sec-divider"></div>
+          <p class="sec-lead">Ce sacrement est le signe de l'amour infini de Dieu. Il n'est pas réservé aux « grands pécheurs » — c'est un cadeau offert à chacun d'entre nous, régulièrement, pour avancer plus librement sur le chemin de la foi.</p>
+        </div>
+
+        <div class="verset-light reveal">
+          <p>« Ce sacrement est le signe de l'amour infini de Dieu. Le pardon de Dieu est toujours possible, si nous faisons une démarche vraiment sincère. »</p>
+          <cite>— Paroisse Sainte Émilie des Causses</cite>
+        </div>
+
+        <!-- Q/R -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin:2rem 0 1rem;">Questions fréquentes</h3>
+        </div>
+
+        <div class="qr-block reveal reveal-delay-1">
+          <div class="qr-q">Pourquoi se confesser à un prêtre et pas directement à Dieu ?</div>
+          <p class="qr-a">C'est Jésus lui-même qui a confié ce pouvoir à ses apôtres : <em>« Ceux à qui vous remettrez les péchés, ils leur seront remis »</em> (Jn 20, 19-23). Les apôtres et leurs successeurs — évêques et prêtres — deviennent des instruments de la miséricorde divine. Le dialogue avec un prêtre est le <strong>signe efficace de la réconciliation</strong> avec Dieu et avec nos frères.</p>
+        </div>
+
+        <div class="qr-block reveal reveal-delay-2">
+          <div class="qr-q">Est-ce que le prêtre va me juger ?</div>
+          <p class="qr-a">Non. Le prêtre est là comme un médecin de l'âme, pas comme un juge. Il est lui-même pécheur et bénéficiaire de cette miséricorde. Le secret de la confession est absolu et inviolable. Vous pouvez venir avec toutes vos fragilités, sans honte ni peur.</p>
+        </div>
+
+        <div class="qr-block reveal reveal-delay-3">
+          <div class="qr-q">Comment se préparer à la confession ?</div>
+          <p class="qr-a">Il s'agit d'abord de <strong>se mettre en vérité face à Dieu</strong> et de lui demander de nous montrer ce qui fait obstacle à l'amour en nous. Un examen de conscience simple et bienveillant — pas une torture ! — suivi d'un vrai désir de changer. Puis venir rencontrer un prêtre.</p>
+        </div>
+
+        <!-- Comment se confesser -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin:2.5rem 0 1rem;">Comment se confesser ?</h3>
+        </div>
+
+        <div class="confesser-steps">
+          <div class="cf-step reveal reveal-delay-1">
+            <div class="cf-icon">🙏</div>
+            <div class="cf-text">
+              <h4>Auprès d'un prêtre — sur rendez-vous</h4>
+              <p>Prenez rendez-vous avec un prêtre à la Maison paroissiale. Il vous accueillera avec bienveillance dans un espace de confiance et de silence. C'est le moment de parler librement, d'être écouté et de recevoir l'absolution.</p>
+            </div>
+          </div>
+          <div class="cf-step reveal reveal-delay-2">
+            <div class="cf-icon">🕯️</div>
+            <div class="cf-text">
+              <h4>Lors des célébrations pénitentielles</h4>
+              <p>Avant les grandes fêtes de Noël ou de Pâques, les paroisses proposent des <strong>célébrations pénitentielles</strong> qui aident à faire un examen de conscience et préparent à accueillir le Pardon de Dieu. Un beau temps communautaire.</p>
+            </div>
+          </div>
+          <div class="cf-step reveal reveal-delay-3">
+            <div class="cf-icon">⛪</div>
+            <div class="cf-text">
+              <h4>La Journée du Pardon — Grand Rodez</h4>
+              <p>Durant le Carême, les paroisses du Grand Rodez se réunissent chaque année pour une <strong>grande célébration du Pardon à la Cathédrale</strong>. Au programme : témoignages, temps de prière, et possibilités de confessions individuelles.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Examen de conscience simplifié -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.4rem;color:var(--encre);margin:2rem 0 1rem;">Un examen de conscience pour m'aider</h3>
+          <p style="color:var(--texte-doux);font-size:.9rem;margin-bottom:1rem;">Quelques questions simples pour me mettre en vérité devant Dieu :</p>
+        </div>
+        <div class="examen-grid reveal">
+          <div class="examen-item"><strong>Ma relation à Dieu</strong>Ai-je pris du temps pour prier ? Ai-je fait confiance à Dieu dans les épreuves ?</div>
+          <div class="examen-item"><strong>Ma relation aux autres</strong>Ai-je blessé quelqu'un par mes paroles ou mes actes ? Ai-je pardonné ?</div>
+          <div class="examen-item"><strong>Ma famille</strong>Ai-je été présent, attentionné, patient avec ceux que j'aime ?</div>
+          <div class="examen-item"><strong>Mon intégrité</strong>Ai-je été honnête dans mon travail, dans mes engagements ?</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-pardon reveal">
+          <div class="sh">
+            <h3>🕊️ Prendre rendez-vous</h3>
+            <p style="font-size:.83rem;opacity:.8;">Le prêtre vous accueille</p>
+          </div>
+          <div class="sb">
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">📞</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Téléphone</span>
+              <a href="tel:0565670574" style="color:var(--bordeaux);font-weight:700;">05 65 67 05 74</a></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">📍</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Adresse</span>
+              <span style="color:var(--texte-doux);">16 avenue des Lilas<br>12850 Onet-le-Château</span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">🕐</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Accueil</span>
+              <span style="color:var(--texte-doux);">Lun–Ven 9h30–12h<br>14h30–17h</span></div>
+            </div>
+            <a href="tel:0565670574" class="btn btn-bordeaux" style="width:100%;text-align:center;justify-content:center;margin-top:1.2rem;display:flex;">Prendre rendez-vous</a>
+            <a href="pdf/demander-pardon.pdf" target="_blank" class="btn btn-ghost-dark btn-sm" style="width:100%;text-align:center;justify-content:center;margin-top:.7rem;display:flex;">📄 Fiche pardon (PDF)</a>
+          </div>
+        </div>
+
+        <!-- Citation miséricorde -->
+        <div style="background:linear-gradient(135deg,var(--bordeaux),#3d1010);border-radius:var(--r);padding:2rem;margin-top:1.5rem;color:var(--blanc);text-align:center;" class="reveal">
+          <p style="font-size:2.5rem;margin-bottom:.5rem;">🕊️</p>
+          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;line-height:1.65;opacity:.95;margin-bottom:.8rem;">« La miséricorde de Dieu est infinie. Elle est plus grande que tous nos péchés réunis. »</p>
+          <p style="font-family:var(--caps);font-size:.68rem;letter-spacing:.12em;color:var(--or-clair);">Pape François</p>
+        </div>
+
+        <!-- Célébrations pénitentielles -->
+        <div style="background:var(--or-pale);border-radius:var(--r);padding:1.5rem;margin-top:1rem;border-left:4px solid var(--or);" class="reveal">
+          <h4 style="font-family:var(--serif);font-size:1rem;color:var(--encre);margin-bottom:.5rem;">📅 Prochains temps forts</h4>
+          <ul style="list-style:none;font-size:.85rem;color:var(--texte-doux);line-height:1.8;">
+            <li>✦ Célébration pénitentielle — Avent</li>
+            <li>✦ Journée du Pardon — Carême</li>
+            <li>✦ Célébration pénitentielle — avant Pâques</li>
+          </ul>
+          <p style="font-size:.78rem;color:var(--pierre);margin-top:.6rem;font-style:italic;">Dates précises dans l'agenda paroissial</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BANDE MISÉRICORDE ── -->
+<div class="misericorde-band">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1.5rem;">✦ ACTE DE CONTRITION ✦</p>
+    <p style="font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--blanc);line-height:1.85;max-width:620px;margin:0 auto;">
+      « Mon Dieu, j'ai un grand regret de vous avoir offensé parce que vous êtes infiniment bon, infiniment aimable, et que le péché vous déplaît. Je prends la ferme résolution, avec le secours de votre sainte grâce, de ne plus vous offenser et de faire pénitence. »
+    </p>
+    <p style="font-family:var(--caps);font-size:.68rem;letter-spacing:.12em;color:var(--or-clair);margin-top:1.5rem;">Prière traditionnelle de l'Église catholique</p>
+  </div>
+</div>
+
+<!-- ── LIENS AUTRES PAGES ── -->
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer le chemin</div>
+      <h2 class="sec-title">Autres <em>sacrements</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="bapteme.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">💧</div><h3 class="card-title">Baptême</h3><p class="card-desc">La porte d'entrée dans la vie chrétienne.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="malades.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🤲</div><h3 class="card-title">Onction des malades</h3><p class="card-desc">Le sacrement de la guérison et de l'espérance.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="prier.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🕯️</div><h3 class="card-title">Prier ensemble</h3><p class="card-desc">Adoration, Rosaire, Renouveau charismatique.</p><span class="card-link">Découvrir</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>Sacrements</h4><ul><li><a href="reconciliation.html">Réconciliation</a></li><li><a href="malades.html">Service des malades</a></li><li><a href="prier.html">Prier</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

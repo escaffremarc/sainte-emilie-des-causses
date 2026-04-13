@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariage — Paroisse Sainte Émilie des Causses</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-mariage {
+  margin-top:var(--nav-h); min-height:55vh;
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, #3d1a4a 0%, #6b2d7a 45%, var(--bordeaux) 100%);
+}
+.hero-mariage::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 75% at 80% 40%, rgba(232,184,75,.22) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cellipse cx='50' cy='50' rx='3' ry='5' fill='rgba(255,255,255,0.04)' transform='rotate(30 50 50)'/%3E%3C/svg%3E");
+}
+
+/* ── ÉTAPES PRÉPARATION ── */
+.prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:2.5rem 0; }
+.prep-card {
+  background:var(--blanc); border-radius:var(--r); padding:2rem;
+  box-shadow:0 4px 20px var(--ombre);
+  border-top:4px solid var(--or); position:relative; overflow:hidden;
+}
+.prep-card::after {
+  content:attr(data-step);
+  position:absolute; top:-10px; right:1rem;
+  font-family:var(--serif); font-size:5rem; font-weight:700;
+  color:rgba(200,151,31,.08); line-height:1; pointer-events:none;
+}
+.prep-card h4 { font-family:var(--serif); font-size:1.15rem; color:var(--encre); margin-bottom:.6rem; font-weight:600; }
+.prep-card p  { font-size:.9rem; color:var(--texte-doux); line-height:1.7; }
+.prep-badge {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:50%;
+  background:var(--or); color:var(--encre);
+  font-family:var(--serif); font-size:1rem; font-weight:700;
+  margin-bottom:1rem; box-shadow:0 3px 10px rgba(200,151,31,.4);
+}
+
+/* ── DEUX TEMPS ── */
+.deux-temps { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0; }
+.temps-block {
+  background:linear-gradient(135deg,var(--or-pale),var(--creme));
+  border-radius:var(--r); padding:1.8rem;
+  border-left:4px solid var(--or);
+}
+.temps-block h4 { font-family:var(--serif); font-size:1.05rem; color:var(--encre); margin-bottom:.6rem; font-weight:600; }
+.temps-block p  { font-size:.88rem; color:var(--texte-doux); line-height:1.65; }
+
+/* ── CHECKLIST ── */
+.checklist { list-style:none; margin:1rem 0; }
+.checklist li {
+  display:flex; align-items:flex-start; gap:.8rem;
+  padding:.55rem 0; border-bottom:1px solid var(--creme); font-size:.9rem; color:var(--texte-doux);
+}
+.checklist li:last-child { border-bottom:none; }
+.checklist li::before { content:'✓'; color:var(--vert-olive); font-weight:800; flex-shrink:0; margin-top:.05rem; }
+
+/* ── TARIF ── */
+.tarif-block {
+  background:linear-gradient(135deg,#3d1a4a,var(--bordeaux));
+  border-radius:var(--r); padding:2rem; color:var(--blanc); text-align:center;
+}
+.tarif-amount { font-family:var(--serif); font-size:3rem; font-weight:700; color:var(--or-clair); margin:.5rem 0; }
+.tarif-detail { font-size:.82rem; opacity:.75; line-height:1.65; }
+
+@media(max-width:768px){
+  .prep-grid { grid-template-columns:1fr; }
+  .deux-temps { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-cross" viewBox="0 0 38 38" fill="none">
+      <rect x="16" y="2" width="6" height="34" rx="3" fill="#C8971F"/>
+      <rect x="2" y="13" width="34" height="6" rx="3" fill="#6B1D1D"/>
+      <circle cx="19" cy="16" r="4" fill="#E8B84B" opacity=".7"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sainte Émilie des Causses</span>
+      <span class="nav-logo-sub">Paroisse · Aveyron</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="la-paroisse.html">La Paroisse</a></li>
+    <li><a href="etapes-de-vie.html" class="active">Étapes de vie</a></li>
+    <li><a href="prier.html">Prier</a></li>
+    <li><a href="s-engager.html">S'engager</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero-mariage">
+  <div class="hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="etapes-de-vie.html">Étapes de vie</a><span>›</span>Mariage
+    </nav>
+    <div class="hero-eyebrow">Sacrement de l'engagement</div>
+    <h1 class="hero-h1">Se marier<br><em>à l'Église</em></h1>
+    <p class="hero-sub">Votre histoire d'amour mérite d'être célébrée dans la beauté et la joie. La préparation au mariage prend en compte votre parcours de couple pour en faire une célébration inoubliable.</p>
+    <div class="hero-verse">
+      « Ce que Dieu a uni, que l'homme ne le sépare pas. »
+      <cite>Matthieu 19, 6</cite>
+    </div>
+    <a href="mailto:mariage.emiliedescausses@gmail.com" class="btn btn-or" style="margin-top:1rem;">💌 Nous contacter pour un mariage</a>
+  </div>
+</div>
+
+<section class="bg-ivoire">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start;">
+      <div>
+        <div class="reveal">
+          <div class="sec-label">Vous êtes les bienvenus</div>
+          <h2 class="sec-title">Votre mariage <em>à l'Église</em></h2>
+          <div class="sec-divider"></div>
+          <p class="sec-lead">Que vous veniez de vous rencontrer ou que vous formiez un couple depuis des années, que vous soyez proches de la foi ou que vous redécouvriiez l'Église — dans tous les cas, vous êtes les bienvenus.</p>
+        </div>
+
+        <div class="verset-light reveal">
+          <p>« La préparation au mariage prend en compte votre histoire de couple pour en faire une célébration belle et joyeuse. »</p>
+          <cite>— Paroisse Sainte Émilie des Causses</cite>
+        </div>
+
+        <!-- Les 4 étapes -->
+        <div class="reveal"><h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--encre);margin:2rem 0 1rem;">Comment organiser votre mariage ?</h3></div>
+        <div class="prep-grid">
+          <div class="prep-card" data-step="1" class="reveal">
+            <div class="prep-badge">1</div>
+            <h4>Réserver votre date</h4>
+            <p>Les mariages se célèbrent <strong>le samedi</strong> dans l'une de nos églises. Deux créneaux possibles : <strong>15h</strong> ou <strong>16h30</strong>. Contactez-nous <strong>le plus tôt possible</strong>, au moins 7 mois avant — et idéalement 1 an à l'avance. La date dépend des disponibilités des célébrants et des réservations déjà faites.</p>
+          </div>
+          <div class="prep-card" data-step="2" class="reveal">
+            <div class="prep-badge">2</div>
+            <h4>S'inscrire</h4>
+            <p>Rendez-vous à la Maison paroissiale, téléphonez-nous ou envoyez un mail à <a href="mailto:mariage.emiliedescausses@gmail.com" style="color:var(--bordeaux);font-weight:600;">mariage.emiliedescausses@gmail.com</a>.<br>
+            Remplissez la <strong>fiche de demande</strong> et retournez-la au secrétariat pour valider votre inscription.</p>
+          </div>
+          <div class="prep-card" data-step="3" class="reveal">
+            <div class="prep-badge">3</div>
+            <h4>La journée de préparation</h4>
+            <p>D'abord, une <strong>journée collective</strong> avec les autres couples (habituellement en février). Au programme : communication dans le couple, les quatre piliers du mariage catholique, votre projet de vie et la dimension spirituelle de votre engagement. Un moment fort et convivial.</p>
+          </div>
+          <div class="prep-card" data-step="4" class="reveal">
+            <div class="prep-badge">4</div>
+            <h4>La préparation individuelle</h4>
+            <p>Le prêtre ou diacre qui vous mariera vous contactera directement pour faire votre connaissance, établir le dossier administratif et <strong>préparer votre cérémonie</strong>. Comptez habituellement entre 3 et 5 rencontres personnalisées selon les couples.</p>
+          </div>
+        </div>
+
+        <!-- Les deux temps de préparation -->
+        <div class="reveal">
+          <h3 style="font-family:var(--serif);font-size:1.4rem;color:var(--encre);margin:2.5rem 0 1rem;">La préparation en deux temps</h3>
+          <div class="deux-temps">
+            <div class="temps-block">
+              <h4>🌿 Journée collective</h4>
+              <p>En début d'année, avec les autres couples de la paroisse. Partage, écoute, découverte des fondements du mariage chrétien dans un esprit fraternel.</p>
+            </div>
+            <div class="temps-block">
+              <h4>🤝 Rencontres personnelles</h4>
+              <p>Avec votre prêtre ou diacre, pour préparer la cérémonie, vous connaître et construire ensemble votre belle journée de mariage.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents -->
+        <div class="reveal" style="background:var(--blanc);border-radius:var(--r);padding:2rem;box-shadow:0 3px 16px var(--ombre);margin-top:2rem;">
+          <h4 style="font-family:var(--serif);font-size:1.15rem;color:var(--encre);margin-bottom:1rem;">📋 Documents demandés</h4>
+          <ul class="checklist">
+            <li>Fiche de demande au mariage (remplie et retournée au secrétariat)</li>
+            <li>Certificats de baptême des futurs époux (datant de moins de 6 mois)</li>
+            <li>Dossier administratif complet (préparé avec le célébrant)</li>
+            <li>Attestation de mariage civil (si mariage civil avant)</li>
+          </ul>
+          <a href="pdf/fiche-mariage-paroisse---maj-juillet-2022.pdf" target="_blank" class="btn btn-ghost-dark btn-sm" style="margin-top:.8rem;">Télécharger la fiche de demande (PDF)</a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div style="background:var(--blanc);border-radius:var(--r);box-shadow:0 4px 24px var(--ombre);overflow:hidden;position:sticky;top:calc(var(--nav-h)+1.5rem);" class="reveal">
+          <div style="background:linear-gradient(135deg,#3d1a4a,var(--bordeaux));padding:1.8rem;color:var(--blanc);">
+            <h3 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:.3rem;">💍 Infos pratiques</h3>
+            <p style="font-size:.83rem;opacity:.8;">Tout ce qu'il faut savoir</p>
+          </div>
+          <div style="padding:1.6rem;">
+            <div class="info-row" style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">📅</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Quand ?</span>
+              <span style="color:var(--texte-doux);">Le samedi<br>15h ou 16h30</span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">⏰</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Délai</span>
+              <span style="color:var(--texte-doux);">Idéalement <strong>1 an</strong> avant<br>Au minimum <strong>7 mois</strong></span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--creme);font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">🎤</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Préparation</span>
+              <span style="color:var(--texte-doux);">1 journée collective<br>+ 3 à 5 rencontres personnelles</span></div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:flex-start;padding:.65rem 0;font-size:.88rem;">
+              <span style="font-size:1.1rem;flex-shrink:0;">💶</span>
+              <div><span style="font-weight:700;font-size:.78rem;font-family:var(--caps);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--encre);margin-bottom:.1rem;">Offrande</span>
+              <span style="color:var(--texte-doux);"><strong style="color:var(--bordeaux);">150 €</strong> à l'inscription<br><em style="font-size:.78rem;">(messe + paroisse + diocèse)</em></span></div>
+            </div>
+            <div class="tarif-block" style="margin-top:1.2rem;">
+              <p style="font-size:.8rem;font-family:var(--caps);letter-spacing:.1em;color:var(--or-clair);">OFFRANDE</p>
+              <div class="tarif-amount">150 €</div>
+              <div class="tarif-detail">17€ messe · 73€ paroisse<br>60€ solidarité diocésaine</div>
+            </div>
+            <a href="mailto:mariage.emiliedescausses@gmail.com" class="btn btn-bordeaux" style="width:100%;text-align:center;justify-content:center;margin-top:1.2rem;display:flex;">✉️ Écrire pour un mariage</a>
+            <a href="tel:0565670574" class="btn btn-ghost-dark btn-sm" style="width:100%;text-align:center;justify-content:center;margin-top:.7rem;display:flex;">📞 05 65 67 05 74</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:linear-gradient(135deg,#3d1a4a,var(--bordeaux));padding:3.5rem 0;">
+  <div class="container-sm text-center reveal">
+    <p style="font-family:var(--caps);font-size:.7rem;letter-spacing:.2em;color:var(--or-clair);margin-bottom:1rem;">✦ PRIÈRE ✦</p>
+    <p style="font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--blanc);line-height:1.8;max-width:580px;margin:0 auto;">
+      « Seigneur, bénis cet amour. Qu'il soit signe de ta tendresse pour le monde et lumière sur le chemin de ceux qui s'aiment. »
+    </p>
+  </div>
+</div>
+
+<section class="bg-creme">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:2.5rem;">
+      <div class="sec-label">Continuer le chemin</div>
+      <h2 class="sec-title">Autres <em>étapes de vie</em></h2>
+    </div>
+    <div class="grid-3 reveal">
+      <a href="bapteme.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">💧</div><h3 class="card-title">Baptême</h3><p class="card-desc">Accueillir un enfant dans la famille de Dieu.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="reconciliation.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🕊️</div><h3 class="card-title">Réconciliation</h3><p class="card-desc">Le sacrement du pardon et de la miséricorde.</p><span class="card-link">Découvrir</span></div></a>
+      <a href="obseques.html" class="card card-v" style="text-decoration:none;color:inherit;"><div class="card-body" style="padding:2rem;"><div class="card-icon-wrap">🌿</div><h3 class="card-title">Obsèques</h3><p class="card-desc">Accompagner dans la paix et l'espérance.</p><span class="card-link">Découvrir</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo">Sainte Émilie des Causses</div><p class="footer-tagline">Choisissez d'être vous… et de le vivre !</p><div class="footer-contact"><p>📍 16 avenue des Lilas, 12850 Onet-le-Château</p><p>📞 <a href="tel:0565670574">05 65 67 05 74</a></p><p>✉️ <a href="mailto:emiliedescausses@gmail.com">emiliedescausses@gmail.com</a></p></div></div><div class="footer-col"><h4>La paroisse</h4><ul><li><a href="la-paroisse.html">Présentation</a></li><li><a href="la-paroisse.html#equipe">Notre équipe</a></li></ul></div><div class="footer-col"><h4>Étapes de vie</h4><ul><li><a href="bapteme.html">Baptême</a></li><li><a href="catechisme.html">Catéchisme</a></li><li><a href="mariage.html">Mariage</a></li><li><a href="obseques.html">Obsèques</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="prier.html">Prier</a></li><li><a href="contact.html">Nous contacter</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Paroisse Sainte Émilie des Causses</p><p><a href="https://rodez.catholique.fr" target="_blank">Diocèse de Rodez</a></p></div></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>20));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
