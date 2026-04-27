@@ -2153,3 +2153,10 @@ section.compact { padding:3.5rem 0; }
   .asso-grid  { grid-template-columns:1fr; }
   .aider-steps{ grid-template-columns:1fr; }
 }
+
+.nav-logo-cross {
+  width: 100px;      /* même taille que le viewBox SVG d'origine */
+  height: 100px;
+  object-fit: contain;
+  border-radius: 50%; /* optionnel, le logo est déjà rond */
+}
