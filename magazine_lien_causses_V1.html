@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Lien des Causses — Maquette Magazine Paroissial</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pourpre:    #6B1F3A;
+    --or:         #C9973A;
+    --or-clair:   #E8C97A;
+    --creme:      #FAF6EE;
+    --creme-fonce:#F0E8D6;
+    --brun:       #3D2510;
+    --gris-texte: #2C2015;
+    --blanc:      #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #D4C9B0;
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--gris-texte);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 60px;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE SYSTÈME
+  ══════════════════════════════════════════ */
+  .page-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #6B5E4A;
+    text-align: center;
+    margin-bottom: -40px;
+  }
+
+  .page {
+    width: 794px;
+    background: var(--creme);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 1 — COUVERTURE
+  ══════════════════════════════════════════ */
+  .cover {
+    height: 1123px;
+    background: var(--creme);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cover-header {
+    background: var(--pourpre);
+    padding: 28px 40px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+
+  .cover-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--or) 0%, var(--or-clair) 50%, var(--or) 100%);
+  }
+
+  .croix-svg {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .surtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--or-clair);
+    margin-bottom: 2px;
+  }
+
+  .magazine-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .magazine-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--or-clair);
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-family: 'Crimson Pro', serif;
+    color: var(--or-clair);
+  }
+
+  .header-num {
+    font-size: 28px;
+    font-weight: 600;
+    display: block;
+    line-height: 1;
+  }
+
+  .header-date {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 3px;
+    color: rgba(232,201,122,0.7);
+  }
+
+  /* Bandeau dore sous le header */
+  .gold-band {
+    background: linear-gradient(135deg, var(--or) 0%, var(--or-clair) 50%, var(--or) 100%);
+    padding: 7px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gold-band-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--pourpre);
+    letter-spacing: 0.5px;
+  }
+
+  /* Image hero */
+  .cover-hero {
+    height: 340px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #2a0a18 0%, #6B1F3A 40%, #8B4513 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .church-illustration {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .cover-hero-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 30px 40px 18px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    color: var(--blanc);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or-clair);
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--blanc);
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+
+  /* Sommaire couverture */
+  .cover-sommaire {
+    padding: 22px 40px;
+    border-bottom: 1px solid var(--creme-fonce);
+  }
+
+  .sommaire-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pourpre);
+    margin-bottom: 12px;
+  }
+
+  .sommaire-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .sommaire-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sommaire-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--or);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .sommaire-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: var(--gris-texte);
+    line-height: 1.3;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* Aperçu articles couverture */
+  .cover-articles {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 2px solid var(--or);
+  }
+
+  .cover-article {
+    padding: 22px 28px;
+    border-right: 1px solid var(--creme-fonce);
+    position: relative;
+  }
+
+  .cover-article:last-child { border-right: none; }
+
+  .article-tag {
+    display: inline-block;
+    font-family: 'Crimson Pro', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blanc);
+    background: var(--pourpre);
+    padding: 3px 8px;
+    margin-bottom: 10px;
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--pourpre);
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .article-excerpt {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #4A3828;
+  }
+
+  .article-author {
+    margin-top: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--or);
+  }
+
+  /* Pied de couverture */
+  .cover-footer {
+    background: var(--pourpre);
+    padding: 12px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: var(--or-clair);
+    letter-spacing: 0.5px;
+  }
+
+  .abonnement-badge {
+    background: var(--or);
+    color: var(--pourpre);
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 2 — ÉDITORIAL + VIE DES SACREMENTS
+  ══════════════════════════════════════════ */
+  .inner-page {
+    min-height: 1123px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inner-header {
+    background: var(--pourpre);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .inner-header-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--or-clair);
+    letter-spacing: 1px;
+  }
+
+  .inner-header-info {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: rgba(232,201,122,0.7);
+    letter-spacing: 1px;
+  }
+
+  .inner-content {
+    flex: 1;
+    padding: 35px 40px;
+  }
+
+  /* Séparateur décoratif */
+  .ornement {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .ornement-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+  }
+
+  .ornement-symbol {
+    color: var(--or);
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* Section édito */
+  .section-heading {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--pourpre);
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--or);
+    display: inline-block;
+  }
+
+  .edito-layout {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .pere-portrait {
+    text-align: center;
+  }
+
+  .portrait-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pourpre) 0%, #9B3560 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    border: 3px solid var(--or);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--or-clair);
+  }
+
+  .portrait-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gris-texte);
+    line-height: 1.3;
+  }
+
+  .portrait-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: var(--pourpre);
+    letter-spacing: 0.5px;
+  }
+
+  .edito-text {
+    position: relative;
+  }
+
+  .edito-dropcap {
+    float: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--pourpre);
+    line-height: 0.8;
+    margin-right: 6px;
+    margin-top: 8px;
+  }
+
+  .edito-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--gris-texte);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .edito-signature {
+    margin-top: 14px;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--pourpre);
+  }
+
+  /* Sacrements */
+  .sacrements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .sacrement-card {
+    border: 1px solid var(--creme-fonce);
+    padding: 14px;
+    background: var(--blanc);
+    position: relative;
+  }
+
+  .sacrement-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .sacrement-card.bapteme::before { background: #4A90C4; }
+  .sacrement-card.mariage::before { background: #C4904A; }
+  .sacrement-card.funerailles::before { background: #6B6B6B; }
+
+  .sacrement-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .sacrement-name {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--pourpre);
+    margin-bottom: 8px;
+  }
+
+  .sacrement-entry {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #4A3828;
+    border-top: 1px solid var(--creme-fonce);
+    padding-top: 5px;
+    margin-top: 5px;
+  }
+
+  .sacrement-entry:first-of-type {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .sacrement-date {
+    font-size: 10.5px;
+    color: var(--or);
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 3 — GROUPES + PROGRAMME
+  ══════════════════════════════════════════ */
+  .programme-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .groupe-card {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--creme-fonce);
+  }
+
+  .groupe-card:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .groupe-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pourpre);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .groupe-icon { font-size: 16px; }
+
+  .groupe-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #4A3828;
+    text-align: justify;
+  }
+
+  .groupe-contact {
+    margin-top: 6px;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--pourpre);
+  }
+
+  /* Programme calendrier */
+  .programme-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pourpre);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--or);
+  }
+
+  .programme-semaine {
+    margin-bottom: 14px;
+  }
+
+  .semaine-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--or);
+    background: var(--pourpre);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 7px;
+  }
+
+  .prog-ligne {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--creme-fonce);
+  }
+
+  .prog-ligne:last-child { border-bottom: none; }
+
+  .prog-jour {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--pourpre);
+    min-width: 72px;
+    flex-shrink: 0;
+  }
+
+  .prog-heure {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: var(--or);
+    min-width: 42px;
+    flex-shrink: 0;
+    font-style: italic;
+  }
+
+  .prog-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12.5px;
+    color: #4A3828;
+    line-height: 1.4;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 4 — BOÎTE À QUESTIONS + ABONNEMENT
+  ══════════════════════════════════════════ */
+  .questions-box {
+    background: var(--pourpre);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .questions-box::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; right: 20px;
+    width: 80%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--or), var(--or-clair));
+  }
+
+  .questions-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--blanc);
+    margin-bottom: 6px;
+  }
+
+  .questions-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--or-clair);
+    margin-bottom: 20px;
+  }
+
+  .question-item {
+    background: rgba(255,255,255,0.08);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--or);
+  }
+
+  .question-q {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--or-clair);
+    margin-bottom: 8px;
+  }
+
+  .question-r {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+  }
+
+  .question-attribution {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--or-clair);
+    text-align: right;
+    margin-top: 8px;
+  }
+
+  .posez-question {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--or);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .posez-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    color: var(--pourpre);
+    font-weight: 600;
+  }
+
+  .posez-adresse {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: var(--brun);
+    font-style: italic;
+  }
+
+  /* Abonnement */
+  .abonnement-section {
+    border: 2px solid var(--or);
+    padding: 24px 28px;
+    position: relative;
+  }
+
+  .abonnement-section::before {
+    content: '✦ ABONNEMENT ✦';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--creme);
+    padding: 0 16px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--or);
+  }
+
+  .abonnement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .abonnement-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pourpre);
+    margin-bottom: 8px;
+  }
+
+  .abonnement-texte {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #4A3828;
+  }
+
+  .abonnement-prix {
+    display: inline-block;
+    background: var(--pourpre);
+    color: var(--blanc);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    padding: 4px 16px;
+    margin: 8px 0;
+  }
+
+  .abonnement-prix span {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .coupon {
+    margin-top: 16px;
+    border: 1px dashed var(--or);
+    padding: 16px;
+    background: var(--creme-fonce);
+  }
+
+  .coupon-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--pourpre);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .coupon-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .coupon-field {
+    border-bottom: 1px solid var(--or);
+    padding: 4px 0;
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: #8A7060;
+  }
+
+  .coupon-field-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pourpre);
+    margin-bottom: 2px;
+  }
+
+  /* Footer commun */
+  .page-footer {
+    background: var(--pourpre);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .footer-parish {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--or-clair);
+  }
+
+  .footer-page {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: rgba(232,201,122,0.6);
+    letter-spacing: 1px;
+  }
+
+  .footer-website {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    color: rgba(232,201,122,0.6);
+  }
+
+  /* ══════════════════════════════════════════
+     NOTE DE MAQUETTE
+  ══════════════════════════════════════════ */
+  .note-maquette {
+    width: 794px;
+    background: #FFF8E7;
+    border: 2px solid var(--or);
+    padding: 24px 32px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .note-titre {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pourpre);
+    margin-bottom: 12px;
+  }
+
+  .note-texte {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #4A3828;
+  }
+
+  .note-texte strong { color: var(--pourpre); }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     PAGE 1 : COUVERTURE
+════════════════════════════════════════ -->
+<div class="page-label">PAGE 1 — COUVERTURE</div>
+<div class="page cover">
+
+  <div class="cover-header">
+    <!-- Croix SVG -->
+    <svg class="croix-svg" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="22" y="4" width="8" height="44" rx="2" fill="#C9973A"/>
+      <rect x="8" y="16" width="36" height="8" rx="2" fill="#C9973A"/>
+      <circle cx="26" cy="20" r="5" fill="none" stroke="#E8C97A" stroke-width="1.5"/>
+    </svg>
+    <div class="header-text">
+      <div class="surtitle">Paroisse Sainte Émilie des Causses · Onet-le-Château</div>
+      <div class="magazine-title">Le Lien des Causses</div>
+      <div class="magazine-subtitle">Le magazine mensuel de votre paroisse</div>
+    </div>
+    <div class="header-meta">
+      <span class="header-num">N° 1</span>
+      <span class="header-date">Mai 2025</span>
+    </div>
+  </div>
+
+  <div class="gold-band">
+    <span class="gold-band-text">✦ Édito du Père Philippe · Sacrements · Vie des groupes · Programme · Boîte à questions ✦</span>
+    <span class="gold-band-text">Diocèse de Rodez-Vabres</span>
+  </div>
+
+  <!-- Image hero illustrée SVG -->
+  <div class="cover-hero">
+    <svg class="church-illustration" viewBox="0 0 794 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ciel -->
+      <defs>
+        <radialGradient id="sky" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#3a1428"/>
+          <stop offset="100%" stop-color="#1a0810"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <rect width="794" height="340" fill="url(#sky)"/>
+      <!-- Étoiles -->
+      <circle cx="120" cy="40" r="1.5" fill="#E8C97A" opacity="0.8"/>
+      <circle cx="200" cy="25" r="1" fill="#E8C97A" opacity="0.6"/>
+      <circle cx="340" cy="55" r="1.5" fill="white" opacity="0.5"/>
+      <circle cx="450" cy="30" r="1" fill="white" opacity="0.7"/>
+      <circle cx="600" cy="20" r="1.5" fill="#E8C97A" opacity="0.6"/>
+      <circle cx="700" cy="45" r="1" fill="white" opacity="0.5"/>
+      <circle cx="750" cy="15" r="1.5" fill="white" opacity="0.8"/>
+      <circle cx="80" cy="70" r="1" fill="#E8C97A" opacity="0.4"/>
+      <!-- Collines Causses -->
+      <path d="M0 220 Q100 180 200 195 Q300 210 400 185 Q500 165 600 190 Q700 210 794 200 L794 340 L0 340Z" fill="#2a1008" opacity="0.7"/>
+      <path d="M0 250 Q120 220 250 235 Q380 245 500 225 Q620 210 794 230 L794 340 L0 340Z" fill="#1a0808" opacity="0.9"/>
+      <!-- Église centrale -->
+      <!-- Nef -->
+      <rect x="297" y="155" width="200" height="130" fill="#3D1820" stroke="#6B1F3A" stroke-width="1"/>
+      <!-- Toit nef -->
+      <polygon points="285,155 397,95 509,155" fill="#4A1A28" stroke="#6B1F3A" stroke-width="1"/>
+      <!-- Clocher -->
+      <rect x="355" y="80" width="84" height="100" fill="#2a1018" stroke="#6B1F3A" stroke-width="1"/>
+      <!-- Flèche clocher -->
+      <polygon points="345,80 397,25 449,80" fill="#6B1F3A" stroke="#C9973A" stroke-width="1.5"/>
+      <!-- Croix sommet -->
+      <line x1="397" y1="25" x2="397" y2="8" stroke="#C9973A" stroke-width="2.5"/>
+      <line x1="389" y1="14" x2="405" y2="14" stroke="#C9973A" stroke-width="2.5"/>
+      <!-- Rose fenêtre -->
+      <circle cx="397" cy="125" r="16" fill="none" stroke="#C9973A" stroke-width="1.5"/>
+      <circle cx="397" cy="125" r="8" fill="none" stroke="#C9973A" stroke-width="1"/>
+      <circle cx="397" cy="125" r="2" fill="#C9973A"/>
+      <line x1="381" y1="125" x2="413" y2="125" stroke="#C9973A" stroke-width="1"/>
+      <line x1="397" y1="109" x2="397" y2="141" stroke="#C9973A" stroke-width="1"/>
+      <line x1="386" y1="114" x2="408" y2="136" stroke="#C9973A" stroke-width="0.5" opacity="0.6"/>
+      <line x1="408" y1="114" x2="386" y2="136" stroke="#C9973A" stroke-width="0.5" opacity="0.6"/>
+      <!-- Fenêtres cloche -->
+      <rect x="367" y="95" width="14" height="22" rx="7" fill="#1a0808" stroke="#C9973A" stroke-width="0.8"/>
+      <rect x="413" y="95" width="14" height="22" rx="7" fill="#1a0808" stroke="#C9973A" stroke-width="0.8"/>
+      <!-- Portail -->
+      <rect x="372" y="235" width="50" height="50" rx="25 25 0 0" fill="#1a0808" stroke="#C9973A" stroke-width="1.5"/>
+      <!-- Lumière portail -->
+      <rect x="376" y="238" width="42" height="42" rx="21 21 0 0" fill="#C9973A" opacity="0.15"/>
+      <!-- Fenêtres nef -->
+      <rect x="310" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.2" stroke="#C9973A" stroke-width="0.8"/>
+      <rect x="465" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.2" stroke="#C9973A" stroke-width="0.8"/>
+      <rect x="335" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.15" stroke="#C9973A" stroke-width="0.8"/>
+      <rect x="440" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.15" stroke="#C9973A" stroke-width="0.8"/>
+      <!-- Halo de lumière autour de la croix -->
+      <circle cx="397" cy="16" r="18" fill="#C9973A" opacity="0.12" filter="url(#glow)"/>
+      <circle cx="397" cy="16" r="10" fill="#C9973A" opacity="0.08"/>
+    </svg>
+    <div class="cover-hero-caption">
+      <div class="hero-eyebrow">Ce mois-ci à la une</div>
+      <div class="hero-headline">«&nbsp;Ensemble, tisser le lien<br>qui unit notre communauté&nbsp;»</div>
+    </div>
+  </div>
+
+  <!-- Sommaire -->
+  <div class="cover-sommaire">
+    <div class="sommaire-title">Au sommaire</div>
+    <div class="sommaire-grid">
+      <div class="sommaire-item">
+        <div class="sommaire-num">P.2</div>
+        <div class="sommaire-label">L'édito du Père Philippe Arnal</div>
+      </div>
+      <div class="sommaire-item">
+        <div class="sommaire-num">P.3</div>
+        <div class="sommaire-label">Vie des sacrements &amp; des groupes</div>
+      </div>
+      <div class="sommaire-item">
+        <div class="sommaire-num">P.6</div>
+        <div class="sommaire-label">Programme du mois complet</div>
+      </div>
+      <div class="sommaire-item">
+        <div class="sommaire-num">P.8</div>
+        <div class="sommaire-label">La boîte à questions du Père Philippe</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aperçu 2 articles -->
+  <div class="cover-articles">
+    <div class="cover-article">
+      <div class="article-tag">Portrait</div>
+      <div class="article-title">Marie-Thérèse, 30 ans au service de l'adoration</div>
+      <div class="article-excerpt">Chaque jeudi matin depuis trois décennies, elle ouvre l'église à l'aube. Un témoignage de fidélité et de paix intérieure qui touche toute la communauté.</div>
+      <div class="article-author">— Témoignage recueilli par la rédaction</div>
+    </div>
+    <div class="cover-article">
+      <div class="article-tag">Vie de la paroisse</div>
+      <div class="article-title">Les jeunes de l'aumônerie au pèlerinage de Lourdes</div>
+      <div class="article-excerpt">Quinze jeunes d'Onet-le-Château ont vécu trois jours de grâce à Lourdes en avril. Récits et photos d'une expérience fondatrice pour ces adolescents.</div>
+      <div class="article-author">— Père André Barnabé</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-text">Paroisse Sainte Émilie des Causses · Onet-le-Château · Aveyron</div>
+    <div class="abonnement-badge">Abonnement postal disponible</div>
+    <div class="cover-footer-text">Gratuit à l'église · PDF sur le site</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 2 : ÉDITORIAL + SACREMENTS
+════════════════════════════════════════ -->
+<div class="page-label">PAGE 2 — ÉDITORIAL &amp; VIE DES SACREMENTS</div>
+<div class="page inner-page">
+  <div class="inner-header">
+    <div class="inner-header-logo">Le Lien des Causses</div>
+    <div class="inner-header-info">N° 1 · Mai 2025</div>
+  </div>
+
+  <div class="inner-content">
+
+    <!-- ÉDITO -->
+    <div class="section-heading">L'éditorial du Père Philippe</div>
+
+    <div class="edito-layout">
+      <div class="pere-portrait">
+        <div class="portrait-circle">
+          <span class="portrait-initials">PA</span>
+        </div>
+        <div class="portrait-name">Père Philippe<br>Arnal</div>
+        <div class="portrait-title">Curé de la paroisse</div>
+      </div>
+      <div class="edito-text">
+        <span class="edito-dropcap">C</span>
+        <div class="edito-body">hers paroissiens, chères paroissiennes, c'est avec une grande joie que je vous présente le premier numéro du <em>Lien des Causses</em>, notre tout nouveau magazine paroissial mensuel.
+
+<br><br>Depuis longtemps, j'avais à cœur de créer un espace où chacun d'entre vous — que vous veniez à la messe chaque dimanche ou que vous vous sentiez parfois un peu éloigné de notre communauté — puisse trouver un écho de ce qui se vit ici, sur nos Causses. La foi n'est pas une affaire solitaire. Elle se tisse dans la rencontre, dans le partage, dans le service de l'autre.
+
+<br><br>Ce magazine sera votre magazine. Chaque mois, vous y trouverez des nouvelles de nos groupes, les joies des baptêmes, des mariages, les noms de ceux qui nous ont quittés et pour qui nous prions. Vous y lirez des témoignages de paroissiens ordinaires dont la vie parle de Dieu extraordinairement.
+
+<br><br>Et puis, j'inaugure dans ce numéro une rubrique qui me tient particulièrement à cœur : la boîte à questions. Posez-moi vos vraies questions, celles que vous n'osez pas toujours formuler. Je vous répondrai du mieux que je peux, en frère et en pasteur.
+
+<br><br>Bonne lecture à tous !</div>
+        <div class="edito-signature">✦ Père Philippe Arnal, curé</div>
+      </div>
+    </div>
+
+    <div class="ornement">
+      <div class="ornement-line"></div>
+      <div class="ornement-symbol">✠</div>
+      <div class="ornement-line"></div>
+    </div>
+
+    <!-- SACREMENTS -->
+    <div class="section-heading">Vie des sacrements ce mois</div>
+
+    <div class="sacrements-grid">
+      <div class="sacrement-card bapteme">
+        <div class="sacrement-icon">💧</div>
+        <div class="sacrement-name">Baptêmes</div>
+        <div class="sacrement-entry">
+          <strong>Léa Fontaine</strong><br>
+          <span class="sacrement-date">6 avril — Messe du dimanche</span>
+        </div>
+        <div class="sacrement-entry">
+          <strong>Théo et Clara Mercier</strong><br>
+          <span class="sacrement-date">20 avril — Famille Mercier</span>
+        </div>
+        <div class="sacrement-entry" style="font-style:italic; font-size:11.5px; color:#7A6A5A;">
+          Nous entourons ces familles<br>de notre prière joyeuse.
+        </div>
+      </div>
+
+      <div class="sacrement-card mariage">
+        <div class="sacrement-icon">💍</div>
+        <div class="sacrement-name">Mariages</div>
+        <div class="sacrement-entry">
+          <strong>Antoine Rouquier<br>&amp; Sophie Delmas</strong><br>
+          <span class="sacrement-date">13 avril — Église Ste Émilie</span>
+        </div>
+        <div class="sacrement-entry" style="font-style:italic; font-size:11.5px; color:#7A6A5A; margin-top:10px;">
+          «&nbsp;Ce que Dieu a uni,<br>que l'homme ne le sépare pas.&nbsp;»<br>— Mc 10, 9
+        </div>
+      </div>
+
+      <div class="sacrement-card funerailles">
+        <div class="sacrement-icon">✠</div>
+        <div class="sacrement-name">Funérailles</div>
+        <div class="sacrement-entry">
+          <strong>Jeanne Bouscary</strong><br>
+          <span class="sacrement-date">3 avril · 84 ans</span>
+        </div>
+        <div class="sacrement-entry">
+          <strong>Pierre-Louis Vaysse</strong><br>
+          <span class="sacrement-date">17 avril · 71 ans</span>
+        </div>
+        <div class="sacrement-entry" style="font-style:italic; font-size:11.5px; color:#7A6A5A;">
+          Nous prions pour eux et pour<br>leurs familles dans l'épreuve.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-parish">Paroisse Sainte Émilie des Causses</div>
+    <div class="footer-page">— 2 —</div>
+    <div class="footer-website">paroisse-sainte-emilie-causses.fr</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 3 : GROUPES + PROGRAMME
+════════════════════════════════════════ -->
+<div class="page-label">PAGE 3 — VIE DES GROUPES &amp; PROGRAMME</div>
+<div class="page inner-page">
+  <div class="inner-header">
+    <div class="inner-header-logo">Le Lien des Causses</div>
+    <div class="inner-header-info">N° 1 · Mai 2025</div>
+  </div>
+
+  <div class="inner-content">
+    <div class="programme-col">
+
+      <!-- COLONNE GAUCHE : GROUPES -->
+      <div>
+        <div class="section-heading">Vie de nos groupes</div>
+
+        <div class="groupe-card">
+          <div class="groupe-title"><span class="groupe-icon">🕯️</span> Adoration</div>
+          <div class="groupe-body">Le groupe d'adoration s'est réuni chaque jeudi matin ce mois-ci. Une belle participation, avec de nouveaux visages. La chapelle est ouverte à tous le jeudi de 9h à 11h. Venez simplement, comme vous êtes.</div>
+          <div class="groupe-contact">Contact : Marie-Thérèse B. — 06 XX XX XX XX</div>
+        </div>
+
+        <div class="groupe-card">
+          <div class="groupe-title"><span class="groupe-icon">💒</span> Préparation au mariage</div>
+          <div class="groupe-body">Deux couples ont commencé leur parcours de préparation en avril. Ils seront accompagnés par Jean-Pierre et Martine Flak pendant quatre soirées. Si vous vous mariez cette année, il est encore possible de rejoindre le groupe.</div>
+          <div class="groupe-contact">Contact : Diacre Jean-Pierre Flak</div>
+        </div>
+
+        <div class="groupe-card">
+          <div class="groupe-title"><span class="groupe-icon">🌊</span> Préparation au baptême</div>
+          <div class="groupe-body">La prochaine session de préparation au baptême des adultes (RCIA) débutera en septembre. Les parents souhaitant faire baptiser leur enfant peuvent contacter l'accueil paroissial dès maintenant pour fixer un rendez-vous.</div>
+          <div class="groupe-contact">Accueil paroissial : 05 XX XX XX XX</div>
+        </div>
+
+        <div class="groupe-card">
+          <div class="groupe-title"><span class="groupe-icon">✝️</span> Accompagnement des deuils</div>
+          <div class="groupe-body">Le groupe « Chemin de deuil » accompagne les familles avant, pendant et après les funérailles. Ce mois-ci, quatre bénévoles ont été présents auprès des familles Bouscary et Vaysse. Merci à eux pour leur discret et précieux service.</div>
+          <div class="groupe-contact">Père André Barnabé</div>
+        </div>
+
+        <div class="groupe-card" style="border-bottom:none;margin-bottom:0;padding-bottom:0;">
+          <div class="groupe-title"><span class="groupe-icon">🎒</span> Aumônerie &amp; Jeunes</div>
+          <div class="groupe-body">Retour de Lourdes ! Quinze jeunes ont vécu un pèlerinage inoubliable. Prochaine réunion le 10 mai. Les jeunes de 6e à Terminale sont les bienvenus.</div>
+          <div class="groupe-contact">Père Philippe Arnal</div>
+        </div>
+      </div>
+
+      <!-- COLONNE DROITE : PROGRAMME -->
+      <div>
+        <div class="programme-heading">Programme de mai</div>
+
+        <div class="programme-semaine">
+          <div class="semaine-label">1ʳᵉ semaine · 1–4 mai</div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Jeudi 1ᵉʳ</span>
+            <span class="prog-heure">9h00</span>
+            <span class="prog-desc">Adoration — Chapelle</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Vendredi 2</span>
+            <span class="prog-heure">18h30</span>
+            <span class="prog-desc">Messe — Église Ste Émilie</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Dimanche 4</span>
+            <span class="prog-heure">10h30</span>
+            <span class="prog-desc">Messe dominicale · Distribution du Lien</span>
+          </div>
+        </div>
+
+        <div class="programme-semaine">
+          <div class="semaine-label">2ᵉ semaine · 5–11 mai</div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Lundi 5</span>
+            <span class="prog-heure">20h30</span>
+            <span class="prog-desc">Prép. au mariage — Salle paroissiale</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Jeudi 8</span>
+            <span class="prog-heure">9h00</span>
+            <span class="prog-desc">Adoration — Chapelle</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Samedi 10</span>
+            <span class="prog-heure">14h00</span>
+            <span class="prog-desc">Aumônerie Jeunes — Salle paroissiale</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Dimanche 11</span>
+            <span class="prog-heure">10h30</span>
+            <span class="prog-desc">Messe — Intention des familles</span>
+          </div>
+        </div>
+
+        <div class="programme-semaine">
+          <div class="semaine-label">3ᵉ semaine · 12–18 mai</div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Jeudi 15</span>
+            <span class="prog-heure">9h00</span>
+            <span class="prog-desc">Adoration — Chapelle</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Vendredi 16</span>
+            <span class="prog-heure">18h30</span>
+            <span class="prog-desc">Messe + Chemin de Deuil</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Dimanche 18</span>
+            <span class="prog-heure">10h30</span>
+            <span class="prog-desc">Messe — Préparation baptêmes</span>
+          </div>
+        </div>
+
+        <div class="programme-semaine">
+          <div class="semaine-label">4ᵉ semaine · 19–25 mai</div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Jeudi 22</span>
+            <span class="prog-heure">9h00</span>
+            <span class="prog-desc">Adoration — Chapelle</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Samedi 24</span>
+            <span class="prog-heure">15h00</span>
+            <span class="prog-desc">Baptêmes — Famille Dubois</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Dimanche 25</span>
+            <span class="prog-heure">10h30</span>
+            <span class="prog-desc">Messe de la Pentecôte</span>
+          </div>
+        </div>
+
+        <div class="programme-semaine">
+          <div class="semaine-label">Fin de mois · 26–31 mai</div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Jeudi 29</span>
+            <span class="prog-heure">9h00</span>
+            <span class="prog-desc">Adoration — Chapelle</span>
+          </div>
+          <div class="prog-ligne">
+            <span class="prog-jour">Vendredi 30</span>
+            <span class="prog-heure">20h00</span>
+            <span class="prog-desc">Veillée mariale — Église</span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; padding:10px 12px; background:var(--creme-fonce); border-left:3px solid var(--pourpre);">
+          <div style="font-family:'Crimson Pro',serif; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--pourpre); margin-bottom:4px;">Intentions de messes</div>
+          <div style="font-family:'Crimson Pro',serif; font-size:12.5px; color:#4A3828; line-height:1.6;">Pour faire dire une messe pour vos intentions ou pour un défunt, contactez l'accueil paroissial. Participation aux frais de culte : participation libre.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-parish">Paroisse Sainte Émilie des Causses</div>
+    <div class="footer-page">— 3 —</div>
+    <div class="footer-website">paroisse-sainte-emilie-causses.fr</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 4 : BOÎTE À QUESTIONS + ABONNEMENT
+════════════════════════════════════════ -->
+<div class="page-label">PAGE 4 — BOÎTE À QUESTIONS &amp; ABONNEMENT</div>
+<div class="page inner-page">
+  <div class="inner-header">
+    <div class="inner-header-logo">Le Lien des Causses</div>
+    <div class="inner-header-info">N° 1 · Mai 2025</div>
+  </div>
+
+  <div class="inner-content">
+
+    <!-- BOÎTE À QUESTIONS -->
+    <div class="questions-box">
+      <div class="questions-title">La Boîte à Questions du Père Philippe</div>
+      <div class="questions-subtitle">Chaque mois, le Père Philippe répond à vos vraies questions, sans filtre et avec le cœur ouvert.</div>
+
+      <div class="question-item">
+        <div class="question-q">« Père Philippe, pourquoi va-t-on à la messe le dimanche et pas un autre jour ? »</div>
+        <div class="question-r">Le dimanche est le «&nbsp;premier jour&nbsp;» de la semaine chrétienne car c'est le jour de la Résurrection du Christ. Pour les premiers chrétiens, se réunir ce jour-là était une façon de «&nbsp;vivre le matin de Pâques&nbsp;» chaque semaine. Ce n'est pas une obligation froide, c'est une invitation à retrouver ensemble la source de notre joie.</div>
+        <div class="question-attribution">— Marie-France, Onet-le-Château</div>
+      </div>
+
+      <div class="question-item">
+        <div class="question-q">« Comment prier quand on ne sait pas quoi dire ? »</div>
+        <div class="question-r">Commencez par le silence. La prière n'est pas d'abord une liste de mots — c'est un regard posé sur Dieu. Saint Jean Vianney racontait qu'un vieux paysan restait des heures assis dans l'église. Il lui demanda ce qu'il faisait. «&nbsp;Je le regarde, et il me regarde.&nbsp;» Voilà la prière. Soyez présents. Le reste vient.</div>
+        <div class="question-attribution">— Question anonyme</div>
+      </div>
+
+      <div class="posez-question">
+        <div>
+          <div class="posez-text">📬 Posez votre question pour le prochain numéro</div>
+          <div class="posez-adresse">Boîte aux lettres de la sacristie · ou par email : contact@paroisse-sainte-emilie-causses.fr</div>
+        </div>
+        <div style="font-family:'Playfair Display',serif; font-size:13px; color:var(--pourpre); font-style:italic; text-align:right; max-width:180px;">Toutes les questions<br>méritent une réponse.</div>
+      </div>
+    </div>
+
+    <div class="ornement">
+      <div class="ornement-line"></div>
+      <div class="ornement-symbol">✠</div>
+      <div class="ornement-line"></div>
+    </div>
+
+    <!-- ABONNEMENT -->
+    <div class="abonnement-section">
+      <div class="abonnement-grid">
+        <div>
+          <div class="abonnement-col-title">📱 Version numérique — Gratuite</div>
+          <div class="abonnement-texte">
+            Téléchargez chaque mois <em>Le Lien des Causses</em> en PDF depuis notre site web ou recevez-le directement par email en vous inscrivant à la newsletter paroissiale.<br><br>
+            <strong>site :</strong> paroisse-sainte-emilie-causses.fr<br>
+            <strong>email :</strong> contact@paroisse-sainte-emilie-causses.fr<br><br>
+            Le magazine est également disponible à l'entrée de l'église chaque premier dimanche du mois.
+          </div>
+        </div>
+        <div>
+          <div class="abonnement-col-title">✉️ Version papier — Abonnement postal</div>
+          <div class="abonnement-texte">
+            Recevez <em>Le Lien des Causses</em> directement dans votre boîte aux lettres chaque mois. L'abonnement couvre uniquement les frais d'impression et d'envoi.
+          </div>
+          <div class="abonnement-prix">15 € <span>/ an · 10 numéros</span></div>
+          <div class="abonnement-texte">Chèque à l'ordre de : <strong>Paroisse Ste Émilie des Causses</strong><br>À retourner avec le coupon ci-dessous.</div>
+        </div>
+      </div>
+
+      <div class="coupon">
+        <div class="coupon-title">✂ — Coupon d'abonnement postal — ✂</div>
+        <div class="coupon-fields">
+          <div class="coupon-field">
+            <div class="coupon-field-label">Nom &amp; Prénom</div>
+            &nbsp;
+          </div>
+          <div class="coupon-field">
+            <div class="coupon-field-label">Téléphone</div>
+            &nbsp;
+          </div>
+          <div class="coupon-field" style="grid-column: 1 / -1;">
+            <div class="coupon-field-label">Adresse postale complète</div>
+            &nbsp;
+          </div>
+          <div class="coupon-field" style="grid-column: 1 / -1;">
+            <div class="coupon-field-label">Email (pour accusé de réception)</div>
+            &nbsp;
+          </div>
+        </div>
+        <div style="margin-top:12px; font-family:'Crimson Pro',serif; font-size:11.5px; color:#6A5840; text-align:center;">
+          À déposer à la sacristie ou envoyer à : Paroisse Sainte Émilie des Causses · Presbytère · Onet-le-Château (12850)<br>
+          <em>Règlement par chèque joint de 15 € à l'ordre de « Paroisse Ste Émilie des Causses »</em>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-parish">Paroisse Sainte Émilie des Causses · Onet-le-Château · Aveyron</div>
+    <div class="footer-page">— 4 —</div>
+    <div class="footer-website">paroisse-sainte-emilie-causses.fr</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     NOTE DE MAQUETTE
+════════════════════════════════════════ -->
+<div class="note-maquette">
+  <div class="note-titre">📋 Note sur cette maquette</div>
+  <div class="note-texte">
+    Cette maquette de 4 pages représente la structure complète d'un numéro du <em>Lien des Causses</em>. 
+    <strong>Les textes, noms et dates sont fictifs</strong> et devront être remplacés par les vraies informations de chaque mois.<br><br>
+    <strong>Pour réaliser le magazine final :</strong> cette maquette HTML peut être imprimée directement en PDF depuis un navigateur (Fichier → Imprimer → Enregistrer en PDF · Format A4). 
+    Elle peut aussi servir de base de travail dans <strong>Canva</strong> (glisser-déposer des éléments visuels) ou dans <strong>Microsoft Publisher</strong>.<br><br>
+    <strong>Rubriques à alimenter chaque mois :</strong> édito Père Philippe · baptêmes/mariages/sépultures · résumé de chaque groupe · programme mensuel · 2 questions-réponses · 1 portrait.
+  </div>
+</div>
+
+</body>
+</html>

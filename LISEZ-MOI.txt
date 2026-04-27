@@ -1,0 +1,46 @@
+═══════════════════════════════════════════════════════════════
+  PAROISSE SAINTE ÉMILIE DES CAUSSES — Structure du site
+═══════════════════════════════════════════════════════════════
+
+COMMENT CHANGER LES COULEURS
+──────────────────────────────
+Il suffit de renommer/remplacer le fichier style.css par l'une
+des variantes fournies :
+
+  style.css                        → Couleurs actuelles (pourpre/bordeaux)
+  style-variante-A-bleu-marian.css → Bleu Marian (RECOMMANDÉ)
+  style-variante-B-vert-liturgique.css → Vert du Temps Ordinaire
+  style-variante-C-bordeaux-chaud.css  → Bordeaux plus lumineux
+
+Pour utiliser une variante :
+  1. Sauvegarder l'actuel style.css (renommez-le en style-ORIGINAL.css)
+  2. Copier la variante choisie et la renommer en style.css
+  3. Rafraîchir le site → toutes les pages changent de couleur !
+
+STRUCTURE DES FICHIERS
+──────────────────────
+  style.css              ← UN SEUL fichier CSS pour tout le site
+  index.html
+  la-paroisse.html
+  etapes-de-vie.html
+  bapteme.html
+  catechisme.html
+  mariage.html
+  reconciliation.html
+  malades.html
+  obseques.html
+  prier.html
+  s-engager.html
+  solidarite.html
+  soutenir.html
+  contact.html
+  magazine_lien_causses*.html   ← CSS autonome (fichiers indépendants)
+
+OÙ MODIFIER LA PALETTE DANS style.css
+──────────────────────────────────────
+Cherchez la section :root { ... } au début du fichier.
+Le bloc de variables commence par /* Palette liturgique chaude */
+ou /* VARIANTE X — ... */ selon la version active.
+Seules les valeurs hexadécimales (#...) sont à modifier.
+
+═══════════════════════════════════════════════════════════════
