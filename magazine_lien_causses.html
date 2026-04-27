@@ -7,12 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pourpre:    #6B1F3A;
-    --or:         #C9973A;
-    --or-clair:   #E8C97A;
+    --pourpre:    #9C7A3C;
+   /* --or:         #B08D57;*/
+    --or:         #2C2015;
+    --or-clair:   #D4AF37;
     --creme:      #FAF6EE;
     --creme-fonce:#F0E8D6;
-    --brun:       #3D2510;
+    --brun:       #895E1A;
     --gris-texte: #2C2015;
     --blanc:      #FFFFFF;
   }
@@ -70,6 +71,7 @@
     position: relative;
   }
 
+
   .cover-header::after {
     content: '';
     position: absolute;
@@ -83,6 +85,13 @@
     height: 52px;
     flex-shrink: 0;
   }
+  .croix-logo-cross {
+  width: 100px;      /* même taille que le viewBox SVG d'origine */
+  height: 100px;
+  flex-shrink:0;
+  object-fit: contain;
+  border-radius: 50%; /* optionnel, le logo est déjà rond */
+}
 
   .header-text {
     flex: 1;
@@ -409,7 +418,7 @@
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--pourpre) 0%, #9B3560 100%);
+    background: linear-gradient(135deg, var(--pourpre) 0%, #804A00 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1052,11 +1061,7 @@
 
   <div class="cover-header">
     <!-- Croix SVG -->
-    <svg class="croix-svg" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="22" y="4" width="8" height="44" rx="2" fill="#C9973A"/>
-      <rect x="8" y="16" width="36" height="8" rx="2" fill="#C9973A"/>
-      <circle cx="26" cy="20" r="5" fill="none" stroke="#E8C97A" stroke-width="1.5"/>
-    </svg>
+    <img src="images\logoPSEC-Rond.png" alt="Logo Paroisse Sainte Émilie des Causses" class="croix-logo-cross" />
     <div class="header-text">
       <div class="surtitle">Paroisse Sainte Émilie des Causses · Onet-le-Château</div>
       <div class="magazine-title">Le Lien des Causses</div>
@@ -1075,67 +1080,7 @@
 
   <!-- Image hero illustrée SVG -->
   <div class="cover-hero">
-    <svg class="church-illustration" viewBox="0 0 794 340" xmlns="http://www.w3.org/2000/svg">
-      <!-- Ciel -->
-      <defs>
-        <radialGradient id="sky" cx="50%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#3a1428"/>
-          <stop offset="100%" stop-color="#1a0810"/>
-        </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <rect width="794" height="340" fill="url(#sky)"/>
-      <!-- Étoiles -->
-      <circle cx="120" cy="40" r="1.5" fill="#E8C97A" opacity="0.8"/>
-      <circle cx="200" cy="25" r="1" fill="#E8C97A" opacity="0.6"/>
-      <circle cx="340" cy="55" r="1.5" fill="white" opacity="0.5"/>
-      <circle cx="450" cy="30" r="1" fill="white" opacity="0.7"/>
-      <circle cx="600" cy="20" r="1.5" fill="#E8C97A" opacity="0.6"/>
-      <circle cx="700" cy="45" r="1" fill="white" opacity="0.5"/>
-      <circle cx="750" cy="15" r="1.5" fill="white" opacity="0.8"/>
-      <circle cx="80" cy="70" r="1" fill="#E8C97A" opacity="0.4"/>
-      <!-- Collines Causses -->
-      <path d="M0 220 Q100 180 200 195 Q300 210 400 185 Q500 165 600 190 Q700 210 794 200 L794 340 L0 340Z" fill="#2a1008" opacity="0.7"/>
-      <path d="M0 250 Q120 220 250 235 Q380 245 500 225 Q620 210 794 230 L794 340 L0 340Z" fill="#1a0808" opacity="0.9"/>
-      <!-- Église centrale -->
-      <!-- Nef -->
-      <rect x="297" y="155" width="200" height="130" fill="#3D1820" stroke="#6B1F3A" stroke-width="1"/>
-      <!-- Toit nef -->
-      <polygon points="285,155 397,95 509,155" fill="#4A1A28" stroke="#6B1F3A" stroke-width="1"/>
-      <!-- Clocher -->
-      <rect x="355" y="80" width="84" height="100" fill="#2a1018" stroke="#6B1F3A" stroke-width="1"/>
-      <!-- Flèche clocher -->
-      <polygon points="345,80 397,25 449,80" fill="#6B1F3A" stroke="#C9973A" stroke-width="1.5"/>
-      <!-- Croix sommet -->
-      <line x1="397" y1="25" x2="397" y2="8" stroke="#C9973A" stroke-width="2.5"/>
-      <line x1="389" y1="14" x2="405" y2="14" stroke="#C9973A" stroke-width="2.5"/>
-      <!-- Rose fenêtre -->
-      <circle cx="397" cy="125" r="16" fill="none" stroke="#C9973A" stroke-width="1.5"/>
-      <circle cx="397" cy="125" r="8" fill="none" stroke="#C9973A" stroke-width="1"/>
-      <circle cx="397" cy="125" r="2" fill="#C9973A"/>
-      <line x1="381" y1="125" x2="413" y2="125" stroke="#C9973A" stroke-width="1"/>
-      <line x1="397" y1="109" x2="397" y2="141" stroke="#C9973A" stroke-width="1"/>
-      <line x1="386" y1="114" x2="408" y2="136" stroke="#C9973A" stroke-width="0.5" opacity="0.6"/>
-      <line x1="408" y1="114" x2="386" y2="136" stroke="#C9973A" stroke-width="0.5" opacity="0.6"/>
-      <!-- Fenêtres cloche -->
-      <rect x="367" y="95" width="14" height="22" rx="7" fill="#1a0808" stroke="#C9973A" stroke-width="0.8"/>
-      <rect x="413" y="95" width="14" height="22" rx="7" fill="#1a0808" stroke="#C9973A" stroke-width="0.8"/>
-      <!-- Portail -->
-      <rect x="372" y="235" width="50" height="50" rx="25 25 0 0" fill="#1a0808" stroke="#C9973A" stroke-width="1.5"/>
-      <!-- Lumière portail -->
-      <rect x="376" y="238" width="42" height="42" rx="21 21 0 0" fill="#C9973A" opacity="0.15"/>
-      <!-- Fenêtres nef -->
-      <rect x="310" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.2" stroke="#C9973A" stroke-width="0.8"/>
-      <rect x="465" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.2" stroke="#C9973A" stroke-width="0.8"/>
-      <rect x="335" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.15" stroke="#C9973A" stroke-width="0.8"/>
-      <rect x="440" y="175" width="20" height="32" rx="10 10 0 0" fill="#C9973A" opacity="0.15" stroke="#C9973A" stroke-width="0.8"/>
-      <!-- Halo de lumière autour de la croix -->
-      <circle cx="397" cy="16" r="18" fill="#C9973A" opacity="0.12" filter="url(#glow)"/>
-      <circle cx="397" cy="16" r="10" fill="#C9973A" opacity="0.08"/>
-    </svg>
+   <img src="images/20220414_162631-Retable-Central.jpg" alt="Illustration paroisse" class="church-illustration" />
     <div class="cover-hero-caption">
       <div class="hero-eyebrow">Ce mois-ci à la une</div>
       <div class="hero-headline">«&nbsp;Ensemble, tisser le lien<br>qui unit notre communauté&nbsp;»</div>
