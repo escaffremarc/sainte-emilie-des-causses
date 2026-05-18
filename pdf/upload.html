@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mise à jour des annonces — Paroisse Sainte-Émilie des Causses</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bordeaux: #6B1F2A;
+    --bordeaux-light: #8B2F3E;
+    --or: #C8A84B;
+    --or-light: #E2C87A;
+    --ivoire: #F9F5ED;
+    --ivoire-dark: #EDE8DA;
+    --texte: #2C1A10;
+    --texte-muted: #7A6050;
+    --blanc: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--ivoire);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  /* Motif de fond subtil */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 20%, rgba(107,31,42,0.04) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(200,168,75,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* En-tête */
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .croix {
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--bordeaux);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--bordeaux);
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    color: var(--texte-muted);
+    margin-top: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Carte principale */
+  .card {
+    background: var(--blanc);
+    border: 1px solid var(--ivoire-dark);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 24px rgba(107,31,42,0.08), 0 1px 4px rgba(107,31,42,0.04);
+  }
+
+  .separator {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--or), transparent);
+    margin-bottom: 1.75rem;
+    border: none;
+  }
+
+  /* Champs */
+  .field {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="password"],
+  input[type="text"] {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--ivoire-dark);
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texte);
+    background: var(--ivoire);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  input[type="password"]:focus,
+  input[type="text"]:focus {
+    border-color: var(--bordeaux);
+    box-shadow: 0 0 0 3px rgba(107,31,42,0.1);
+    background: var(--blanc);
+  }
+
+  /* Zone de dépôt */
+  .drop-zone {
+    border: 2px dashed var(--ivoire-dark);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--ivoire);
+  }
+
+  .drop-zone:hover {
+    border-color: var(--or);
+    background: #FDF9F0;
+  }
+
+  .drop-zone.has-file {
+    border-color: var(--bordeaux);
+    border-style: solid;
+    background: #FDF5F5;
+  }
+
+  .drop-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .drop-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texte);
+    margin-bottom: 0.25rem;
+  }
+
+  .drop-hint {
+    font-size: 0.78rem;
+    color: var(--texte-muted);
+  }
+
+  /* Bouton */
+  .btn {
+    width: 100%;
+    padding: 0.85rem;
+    background: var(--bordeaux);
+    color: var(--blanc);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.75rem;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn:hover:not(:disabled) {
+    background: var(--bordeaux-light);
+  }
+
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Barre de progression */
+  .progress-bar {
+    height: 3px;
+    background: var(--ivoire-dark);
+    border-radius: 2px;
+    margin-top: 1rem;
+    overflow: hidden;
+    display: none;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, var(--bordeaux), var(--or));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  /* Messages de statut */
+  .status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    display: none;
+    line-height: 1.5;
+  }
+
+  .status.success {
+    background: #EEF7EE;
+    color: #1A5C1A;
+    border: 1px solid #B8DDB8;
+    display: block;
+  }
+
+  .status.error {
+    background: #FDF0F0;
+    color: var(--bordeaux);
+    border: 1px solid #F0C0C0;
+    display: block;
+  }
+
+  .status.loading {
+    background: var(--ivoire);
+    color: var(--texte-muted);
+    border: 1px solid var(--ivoire-dark);
+    display: block;
+  }
+
+  /* Pied de page */
+  .footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--texte-muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <div class="croix">✝</div>
+    <h1>Mise à jour des annonces</h1>
+    <p>Paroisse Sainte-Émilie des Causses — Onet-le-Château</p>
+  </div>
+
+  <div class="card">
+    <hr class="separator">
+
+    <div class="field">
+      <label for="pwd">Mot de passe</label>
+      <input type="password" id="pwd" placeholder="••••••••••••" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label>Fichier PDF des annonces</label>
+      <div class="drop-zone" id="drop-zone"
+           onclick="document.getElementById('file-input').click()"
+           ondragover="onDragOver(event)"
+           ondragleave="onDragLeave(event)"
+           ondrop="onDrop(event)">
+        <div class="drop-icon" id="drop-icon">📄</div>
+        <p class="drop-label" id="drop-label">Glisser-déposer ou cliquer</p>
+        <p class="drop-hint" id="drop-hint">PDF uniquement — remplacera Annonces.pdf en ligne</p>
+      </div>
+      <input type="file" id="file-input" accept="application/pdf" style="display:none" onchange="onFileSelected(this)">
+    </div>
+
+    <div class="progress-bar" id="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <button class="btn" id="btn" onclick="upload()" disabled>Mettre à jour le PDF</button>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="footer">Usage réservé aux responsables de communication de la paroisse</div>
+</div>
+
+<script>
+  // ── Configuration ──────────────────────────────────────────
+  const GITHUB_TOKEN = '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';   // ← remplacer avant de déposer
+  const MOT_DE_PASSE = 'Paroisse2025';    // ← changer ici si besoin
+  const OWNER       = 'escaffremarc';
+  const REPO        = 'sainte-emilie-des-causses';
+  const FILE_PATH   = 'pdf/Annonces.pdf';
+  const BRANCH      = 'main';
+  // ───────────────────────────────────────────────────────────
+
+  let selectedFile = null;
+
+  function checkReady() {
+    document.getElementById('btn').disabled = !(selectedFile && document.getElementById('pwd').value.trim());
+  }
+  document.getElementById('pwd').addEventListener('input', checkReady);
+
+  function setFile(file) {
+    if (!file || file.type !== 'application/pdf') {
+      showStatus('Veuillez sélectionner un fichier PDF.', 'error');
+      return;
+    }
+    selectedFile = file;
+    const dz = document.getElementById('drop-zone');
+    dz.classList.add('has-file');
+    document.getElementById('drop-icon').textContent = '✅';
+    document.getElementById('drop-label').textContent = file.name;
+    document.getElementById('drop-hint').textContent = (file.size / 1024).toFixed(0) + ' Ko';
+    checkReady();
+  }
+
+  function onFileSelected(input) { if (input.files[0]) setFile(input.files[0]); }
+  function onDragOver(e)  { e.preventDefault(); document.getElementById('drop-zone').style.borderColor = 'var(--or)'; }
+  function onDragLeave(e) { document.getElementById('drop-zone').style.borderColor = ''; }
+  function onDrop(e)      { e.preventDefault(); document.getElementById('drop-zone').style.borderColor = ''; if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]); }
+
+  function showStatus(msg, type) {
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = 'status ' + type;
+  }
+
+  async function upload() {
+    const pwd = document.getElementById('pwd').value.trim();
+    if (pwd !== MOT_DE_PASSE) {
+      showStatus('Mot de passe incorrect.', 'error');
+      return;
+    }
+    if (!selectedFile) return;
+
+    const btn = document.getElementById('btn');
+    btn.disabled = true;
+
+    const pb = document.getElementById('progress-bar');
+    const pf = document.getElementById('progress-fill');
+    pb.style.display = 'block';
+    pf.style.width = '15%';
+    showStatus('Lecture du fichier…', 'loading');
+
+    try {
+      const base64 = await toBase64(selectedFile);
+      pf.style.width = '40%';
+      showStatus('Connexion à GitHub…', 'loading');
+
+      const headers = {
+        'Authorization': 'token ' + GITHUB_TOKEN,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28'
+      };
+
+      const getResp = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`,
+        { headers }
+      );
+      pf.style.width = '60%';
+
+      let sha = null;
+      if (getResp.ok) {
+        sha = (await getResp.json()).sha;
+      } else if (getResp.status !== 404) {
+        const err = await getResp.json();
+        throw new Error(err.message || 'Erreur GitHub');
+      }
+
+      showStatus('Envoi du fichier en cours…', 'loading');
+      pf.style.width = '80%';
+
+      const body = { message: 'Mise à jour Annonces.pdf', content: base64, branch: BRANCH };
+      if (sha) body.sha = sha;
+
+      const putResp = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`,
+        { method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+      );
+
+      pf.style.width = '100%';
+      const result = await putResp.json();
+      if (!putResp.ok) throw new Error(result.message || 'Erreur lors de l\'envoi');
+
+      showStatus('✓ Les annonces ont été mises à jour avec succès ! Le PDF sera disponible en ligne dans quelques secondes.', 'success');
+      selectedFile = null;
+      document.getElementById('file-input').value = '';
+
+    } catch (err) {
+      showStatus('Erreur : ' + err.message, 'error');
+      pb.style.display = 'none';
+      btn.disabled = false;
+    }
+  }
+
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+</script>
+</body>
+</html>
